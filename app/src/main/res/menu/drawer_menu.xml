@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_regs"
+            android:checked="true"
+            android:icon="@drawable/ic_registros"
+            android:title="@string/regs_title" />
+    </group>
+
+    <item android:title="@string/nav_subgroup">
+
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_comp"
+                    android:icon="@drawable/ic_compras"
+                    android:title="@string/comp_title" />
+                <item
+                    android:id="@+id/nav_vent"
+                    android:icon="@drawable/ic_ventas"
+                    android:title="@string/vent_title" />
+            </group>
+        </menu>
+    </item>
+
+</menu>

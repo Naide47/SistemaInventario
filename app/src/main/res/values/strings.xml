@@ -1,0 +1,20 @@
+<resources>
+<!--    General-->
+    <string name="app_name">SistemaInventario</string>
+    <string name="nav_subgroup">Comercio</string>
+    <string name="drawer_open">Abrir drawer</string>
+    <string name="drawer_close">Cerrar drawer</string>
+
+    <string name="hello_blank_fragment">Flagmento por defecto</string>
+
+    <string name="regs_title">Registros</string>
+    <string name="regs_vends_title">Vendedores</string>
+    <string name="regs_cls_title">Clientes</string>
+    <string name="regs_prov_title">Proveedores</string>
+    <string name="regs_prod_title">Productos</string>
+
+    <string name="comp_title">Compras</string>
+
+    <string name="vent_title">Ventas</string>
+
+</resources>
