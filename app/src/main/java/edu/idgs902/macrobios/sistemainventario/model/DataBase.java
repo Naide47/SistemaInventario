@@ -107,20 +107,20 @@ public class DataBase extends SQLiteOpenHelper {
                 K_EXTERNO_TIPO + " INTEGER," +
                 K_EXTERNO_RFC + " TEXT," +
                 K_EXTERNO_CIUDAD + " TEXT," +
-                K_EXTERNO_SALDO + " REAL)");
+                K_EXTERNO_SALDO + " REAL DEFAULT 0)");
         db.execSQL("CREATE TABLE " + T_VENDEDOR + " (" +
                 K_VENDEDOR_NOVENDEDOR + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 K_PERSONA_NOPERSONA + " INTEGER," +
-                K_VENDEDOR_COMISIONES + " REAL)");
+                K_VENDEDOR_COMISIONES + " REAL DEFAULT 0)");
         db.execSQL("CREATE TABLE " + T_PRODUCTO + " (" +
                 K_PRODUCTO_NOPRODUCTO + " TEXT PRIMARY KEY," +
                 K_PRODUCTO_NOMBRE + " TEXT," +
                 K_PRODUCTO_LINEA + " TEXT," +
                 K_PRODUCTO_EXISTENCIA + " INTEGER," +
-                K_PRODUCTO_P_COSTO + " REAL," +
-                K_PRODUCTO_P_PROMEDIO + " REAL," +
-                K_PRODUCTO_P_VENTA_MAYOR + " REAL," +
-                K_PRODUCTO_P_VENTA_MENOR + " REAL)");
+                K_PRODUCTO_P_COSTO + " REAL DEFAULT 0," +
+                K_PRODUCTO_P_PROMEDIO + " REAL DEFAULT 0," +
+                K_PRODUCTO_P_VENTA_MAYOR + " REAL DEFAULT 0," +
+                K_PRODUCTO_P_VENTA_MENOR + " REAL DEFAULT 0)");
         db.execSQL("CREATE TABLE " + T_COMPRA + " (" +
                 K_COMPRA_NOCOMPRA+ " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 K_COMPRA_NOEXTERNOPROVEEDOR + " INTEGER," +
