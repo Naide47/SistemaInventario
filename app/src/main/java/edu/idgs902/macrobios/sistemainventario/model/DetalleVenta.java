@@ -5,13 +5,13 @@ import android.os.Parcelable;
 
 public class DetalleVenta implements Parcelable {
 
-    private int detalle_venta_no;
+    private int noDetalleVenta;
     private Producto producto;
     private int cantidad_producto;
     private double precio_venta;
 
-    public DetalleVenta(int detalle_venta_no, Producto producto, int cantidad_producto, double precio_venta) {
-        this.detalle_venta_no = detalle_venta_no;
+    public DetalleVenta(int noDetalleVenta, Producto producto, int cantidad_producto, double precio_venta) {
+        this.noDetalleVenta = noDetalleVenta;
         this.producto = producto;
         this.cantidad_producto = cantidad_producto;
         this.precio_venta = precio_venta;
@@ -24,7 +24,7 @@ public class DetalleVenta implements Parcelable {
     }
 
     protected DetalleVenta(Parcel in) {
-        detalle_venta_no = in.readInt();
+        noDetalleVenta = in.readInt();
         producto = in.readParcelable(Producto.class.getClassLoader());
         cantidad_producto = in.readInt();
         precio_venta = in.readDouble();
@@ -42,8 +42,8 @@ public class DetalleVenta implements Parcelable {
         }
     };
 
-    public int getDetalle_venta_no() {
-        return detalle_venta_no;
+    public int getNoDetalleVenta() {
+        return noDetalleVenta;
     }
 
     public Producto getProducto() {
@@ -65,7 +65,7 @@ public class DetalleVenta implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(detalle_venta_no);
+        dest.writeInt(noDetalleVenta);
         dest.writeParcelable(producto, flags);
         dest.writeInt(cantidad_producto);
         dest.writeDouble(precio_venta);

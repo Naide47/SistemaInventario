@@ -77,7 +77,7 @@ public class ControllerPersona extends DataBase {
     public boolean updatePersona(Persona persona) {
         int result = 0;
         try {
-            if (getPersona(persona.getPersona_no()) != null) {
+            if (getPersona(persona.getNoPersona()) != null) {
                 conection = new DataBase(context);
                 sqlite = conection.getWritableDatabase();
 
@@ -90,7 +90,7 @@ public class ControllerPersona extends DataBase {
 
                 result = sqlite.update(T_PERSONA,
                         values, K_PERSONA_NOPERSONA + "=?",
-                        new String[]{String.valueOf(persona.getPersona_no())});
+                        new String[]{String.valueOf(persona.getNoPersona())});
                 sqlite.close();
             }
         } catch (Exception ex) {

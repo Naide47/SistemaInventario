@@ -5,13 +5,13 @@ import android.os.Parcelable;
 
 public class Vendedor extends Persona {
 
-    private int vendedor_no; //Numero
+    private int noVendedor; //Numero
     private double comisiones;
 
     // Con IDS
-    public Vendedor(int persona_no, String nombre, String calle, String colonia, String telefono, String email, int vendedor_no, double comisiones) {
+    public Vendedor(int persona_no, String nombre, String calle, String colonia, String telefono, String email, int noVendedor, double comisiones) {
         super(persona_no, nombre, calle, colonia, telefono, email);
-        this.vendedor_no = vendedor_no;
+        this.noVendedor = noVendedor;
         this.comisiones = comisiones;
     }
 
@@ -23,12 +23,12 @@ public class Vendedor extends Persona {
 
     private Vendedor(Parcel in) {
         super(in);
-        vendedor_no = in.readInt();
+        noVendedor = in.readInt();
         comisiones = in.readDouble();
     }
 
-    public int getVendedor_no() {
-        return vendedor_no;
+    public int getNoVendedor() {
+        return noVendedor;
     }
 
     public double getComisiones() {
@@ -51,7 +51,7 @@ public class Vendedor extends Persona {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         super.writeToParcel(dest, flags);
-        dest.writeInt(vendedor_no);
+        dest.writeInt(noVendedor);
         dest.writeDouble(comisiones);
     }
 }

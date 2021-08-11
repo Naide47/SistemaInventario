@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Compra implements Parcelable {
 
-    private int venta_no; //Nùmero
+    private int noCompra; //Nùmero
     private Externo externo_proveedor;
     private String fecha;
     private String f_r;
@@ -18,8 +18,8 @@ public class Compra implements Parcelable {
     private double total_venta;
     private List<DetalleCompra> detallesCompra;
 
-    public Compra(int venta_no, Externo externo_proveedor, String fecha, String f_r, int f_r_no, int total_pares, double suma, double iva, double total_venta) {
-        this.venta_no = venta_no;
+    public Compra(int noCompra, Externo externo_proveedor, String fecha, String f_r, int f_r_no, int total_pares, double suma, double iva, double total_venta) {
+        this.noCompra = noCompra;
         this.externo_proveedor = externo_proveedor;
         this.fecha = fecha;
         this.f_r = f_r;
@@ -42,7 +42,7 @@ public class Compra implements Parcelable {
     }
 
     protected Compra(Parcel in) {
-        venta_no = in.readInt();
+        noCompra = in.readInt();
         externo_proveedor = in.readParcelable(Externo.class.getClassLoader());
         fecha = in.readString();
         f_r = in.readString();
@@ -66,8 +66,8 @@ public class Compra implements Parcelable {
         }
     };
 
-    public int getVenta_no() {
-        return venta_no;
+    public int getNoCompra() {
+        return noCompra;
     }
 
     public Externo getExterno_proveedor() {
@@ -109,7 +109,7 @@ public class Compra implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(venta_no);
+        dest.writeInt(noCompra);
         dest.writeParcelable(externo_proveedor, flags);
         dest.writeString(fecha);
         dest.writeString(f_r);

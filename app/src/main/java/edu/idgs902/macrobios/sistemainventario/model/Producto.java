@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class Producto implements Parcelable {
 
-    private String producto_no; //Nùmero
+    private String noProducto; //Nùmero
     private String nombre;
     private String linea;
     private int existencia;
@@ -14,8 +14,8 @@ public class Producto implements Parcelable {
     private double p_venta_mayor;
     private double p_venta_menor;
 
-    public Producto(String producto_no, String nombre, String linea, int existencia, double p_costo, double p_promedio, double p_venta_mayor, double p_venta_menor) {
-        this.producto_no = producto_no;
+    public Producto(String noProducto, String nombre, String linea, int existencia, double p_costo, double p_promedio, double p_venta_mayor, double p_venta_menor) {
+        this.noProducto = noProducto;
         this.nombre = nombre;
         this.linea = linea;
         this.existencia = existencia;
@@ -36,7 +36,7 @@ public class Producto implements Parcelable {
     }
 
     protected Producto(Parcel in) {
-        producto_no = in.readString();
+        noProducto = in.readString();
         nombre = in.readString();
         linea = in.readString();
         existencia = in.readInt();
@@ -58,8 +58,8 @@ public class Producto implements Parcelable {
         }
     };
 
-    public String getProducto_no() {
-        return producto_no;
+    public String getNoProducto() {
+        return noProducto;
     }
 
     public String getNombre() {
@@ -97,7 +97,7 @@ public class Producto implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(producto_no);
+        dest.writeString(noProducto);
         dest.writeString(nombre);
         dest.writeString(linea);
         dest.writeInt(existencia);

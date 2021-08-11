@@ -5,15 +5,15 @@ import android.os.Parcelable;
 
 public class Persona implements Parcelable {
 
-    private int persona_no; // Numero
+    private int noPersona; // Numero
     private String nombre;
     private String calle;
     private String colonia;
     private String telefono;
     private String email;
 
-    public Persona(int persona_no, String nombre, String calle, String colonia, String telefono, String email) {
-        this.persona_no = persona_no;
+    public Persona(int noPersona, String nombre, String calle, String colonia, String telefono, String email) {
+        this.noPersona = noPersona;
         this.nombre = nombre;
         this.calle = calle;
         this.colonia = colonia;
@@ -30,7 +30,7 @@ public class Persona implements Parcelable {
     }
 
     protected Persona(Parcel in) {
-        persona_no = in.readInt();
+        noPersona = in.readInt();
         nombre = in.readString();
         calle = in.readString();
         colonia = in.readString();
@@ -50,8 +50,8 @@ public class Persona implements Parcelable {
         }
     };
 
-    public int getPersona_no() {
-        return persona_no;
+    public int getNoPersona() {
+        return noPersona;
     }
 
     public String getNombre() {
@@ -81,7 +81,7 @@ public class Persona implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(persona_no);
+        dest.writeInt(noPersona);
         dest.writeString(nombre);
         dest.writeString(calle);
         dest.writeString(colonia);
