@@ -1,4 +1,4 @@
-package edu.idgs902.macrobios.sistemainventario.controller;
+package edu.idgs902.macrobios.sistemainventario.controller.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

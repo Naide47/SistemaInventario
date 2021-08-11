@@ -1,8 +1,11 @@
 package edu.idgs902.macrobios.sistemainventario.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
-public class Compra {
+public class Compra implements Parcelable {
 
     private int venta_no; //Nùmero
     private Externo externo_proveedor;
@@ -38,6 +41,31 @@ public class Compra {
         this.total_venta = total_venta;
     }
 
+    protected Compra(Parcel in) {
+        venta_no = in.readInt();
+        externo_proveedor = in.readParcelable(Externo.class.getClassLoader());
+        fecha = in.readString();
+        f_r = in.readString();
+        f_r_no = in.readInt();
+        total_pares = in.readInt();
+        suma = in.readDouble();
+        iva = in.readDouble();
+        total_venta = in.readDouble();
+        detallesCompra = in.createTypedArrayList(DetalleCompra.CREATOR);
+    }
+
+    public static final Creator<Compra> CREATOR = new Creator<Compra>() {
+        @Override
+        public Compra createFromParcel(Parcel in) {
+            return new Compra(in);
+        }
+
+        @Override
+        public Compra[] newArray(int size) {
+            return new Compra[size];
+        }
+    };
+
     public int getVenta_no() {
         return venta_no;
     }
@@ -72,5 +100,24 @@ public class Compra {
 
     public double getTotal_venta() {
         return total_venta;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(venta_no);
+        dest.writeParcelable(externo_proveedor, flags);
+        dest.writeString(fecha);
+        dest.writeString(f_r);
+        dest.writeInt(f_r_no);
+        dest.writeInt(total_pares);
+        dest.writeDouble(suma);
+        dest.writeDouble(iva);
+        dest.writeDouble(total_venta);
+        dest.writeTypedList(detallesCompra);
     }
 }

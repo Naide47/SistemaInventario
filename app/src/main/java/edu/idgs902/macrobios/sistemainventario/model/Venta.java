@@ -1,8 +1,11 @@
 package edu.idgs902.macrobios.sistemainventario.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
-public class Venta {
+public class Venta implements Parcelable {
 
     private int venta_no; //Nùmero
     private Externo externo_cliente;
@@ -43,6 +46,33 @@ public class Venta {
         this.iva = iva;
         this.total_venta = total_venta;
     }
+
+    protected Venta(Parcel in) {
+        venta_no = in.readInt();
+        externo_cliente = in.readParcelable(Externo.class.getClassLoader());
+        vendedor = in.readParcelable(Vendedor.class.getClassLoader());
+        fecha = in.readString();
+        comision = in.readInt();
+        f_r = in.readString();
+        f_r_no = in.readInt();
+        total_pares = in.readInt();
+        suma = in.readDouble();
+        iva = in.readDouble();
+        total_venta = in.readDouble();
+        detallesVenta = in.createTypedArrayList(DetalleVenta.CREATOR);
+    }
+
+    public static final Creator<Venta> CREATOR = new Creator<Venta>() {
+        @Override
+        public Venta createFromParcel(Parcel in) {
+            return new Venta(in);
+        }
+
+        @Override
+        public Venta[] newArray(int size) {
+            return new Venta[size];
+        }
+    };
 
     public int getVenta_no() {
         return venta_no;
@@ -86,5 +116,26 @@ public class Venta {
 
     public double getTotal_venta() {
         return total_venta;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(venta_no);
+        dest.writeParcelable(externo_cliente, flags);
+        dest.writeParcelable(vendedor, flags);
+        dest.writeString(fecha);
+        dest.writeInt(comision);
+        dest.writeString(f_r);
+        dest.writeInt(f_r_no);
+        dest.writeInt(total_pares);
+        dest.writeDouble(suma);
+        dest.writeDouble(iva);
+        dest.writeDouble(total_venta);
+        dest.writeTypedList(detallesVenta);
     }
 }
