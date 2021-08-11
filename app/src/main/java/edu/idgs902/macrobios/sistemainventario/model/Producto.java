@@ -1,6 +1,9 @@
 package edu.idgs902.macrobios.sistemainventario.model;
 
-public class Producto {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Producto implements Parcelable {
 
     private String producto_no; //Nùmero
     private String nombre;
@@ -32,6 +35,29 @@ public class Producto {
         this.p_venta_menor = p_venta_menor;
     }
 
+    protected Producto(Parcel in) {
+        producto_no = in.readString();
+        nombre = in.readString();
+        linea = in.readString();
+        existencia = in.readInt();
+        p_costo = in.readDouble();
+        p_promedio = in.readDouble();
+        p_venta_mayor = in.readDouble();
+        p_venta_menor = in.readDouble();
+    }
+
+    public static final Creator<Producto> CREATOR = new Creator<Producto>() {
+        @Override
+        public Producto createFromParcel(Parcel in) {
+            return new Producto(in);
+        }
+
+        @Override
+        public Producto[] newArray(int size) {
+            return new Producto[size];
+        }
+    };
+
     public String getProducto_no() {
         return producto_no;
     }
@@ -62,5 +88,22 @@ public class Producto {
 
     public double getP_venta_menor() {
         return p_venta_menor;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(producto_no);
+        dest.writeString(nombre);
+        dest.writeString(linea);
+        dest.writeInt(existencia);
+        dest.writeDouble(p_costo);
+        dest.writeDouble(p_promedio);
+        dest.writeDouble(p_venta_mayor);
+        dest.writeDouble(p_venta_menor);
     }
 }

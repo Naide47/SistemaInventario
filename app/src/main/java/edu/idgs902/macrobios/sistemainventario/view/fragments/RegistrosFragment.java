@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTabHost;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
@@ -17,9 +18,9 @@ import edu.idgs902.macrobios.sistemainventario.controller.FragmentAdapter;
 
 public class RegistrosFragment extends Fragment {
 
-    TabLayout tabs;
-    ViewPager2 page2;
-    FragmentAdapter adapter;
+    private TabLayout tabs;
+    private ViewPager2 page2;
+    private FragmentAdapter adapter;
 
 
     public RegistrosFragment() {
@@ -38,11 +39,6 @@ public class RegistrosFragment extends Fragment {
         FragmentManager fm = getChildFragmentManager();
         adapter = new FragmentAdapter(fm, getLifecycle());
         page2.setAdapter(adapter);
-
-//        tabs.addTab(tabs.newTab().setText(R.string.regs_vends_title));
-//        tabs.addTab(tabs.newTab().setText(R.string.regs_cls_title));
-//        tabs.addTab(tabs.newTab().setText(R.string.regs_prov_title));
-//        tabs.addTab(tabs.newTab().setText(R.string.regs_prod_title));
 
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

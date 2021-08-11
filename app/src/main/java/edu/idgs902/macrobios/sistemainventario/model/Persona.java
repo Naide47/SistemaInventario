@@ -1,6 +1,9 @@
 package edu.idgs902.macrobios.sistemainventario.model;
 
-public class Persona {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Persona implements Parcelable {
 
     private int persona_no; // Numero
     private String nombre;
@@ -26,6 +29,27 @@ public class Persona {
         this.email = email;
     }
 
+    protected Persona(Parcel in) {
+        persona_no = in.readInt();
+        nombre = in.readString();
+        calle = in.readString();
+        colonia = in.readString();
+        telefono = in.readString();
+        email = in.readString();
+    }
+
+    public static final Creator<Persona> CREATOR = new Creator<Persona>() {
+        @Override
+        public Persona createFromParcel(Parcel in) {
+            return new Persona(in);
+        }
+
+        @Override
+        public Persona[] newArray(int size) {
+            return new Persona[size];
+        }
+    };
+
     public int getPersona_no() {
         return persona_no;
     }
@@ -48,5 +72,20 @@ public class Persona {
 
     public String getEmail() {
         return email;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(persona_no);
+        dest.writeString(nombre);
+        dest.writeString(calle);
+        dest.writeString(colonia);
+        dest.writeString(telefono);
+        dest.writeString(email);
     }
 }

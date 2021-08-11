@@ -1,5 +1,8 @@
 package edu.idgs902.macrobios.sistemainventario.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 public class Externo extends Persona{
 
     private int externo_no; //Número
@@ -25,6 +28,15 @@ public class Externo extends Persona{
         this.saldo = saldo;
     }
 
+    private Externo(Parcel in) {
+        super(in);
+        externo_no = in.readInt();
+        tipo = in.readInt();
+        rfc = in.readString();
+        ciudad = in.readString();
+        saldo = in.readDouble();
+    }
+
     public int getExterno_no() {
         return externo_no;
     }
@@ -43,5 +55,27 @@ public class Externo extends Persona{
 
     public double getSaldo() {
         return saldo;
+    }
+
+    public static final Parcelable.Creator<Externo> CREATOR = new Creator<Externo>() {
+        @Override
+        public Externo createFromParcel(Parcel in) {
+            return new Externo(in);
+        }
+
+        @Override
+        public Externo[] newArray(int size) {
+            return new Externo[size];
+        }
+    };
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        super.writeToParcel(dest,flags);
+        dest.writeInt(externo_no);
+        dest.writeInt(tipo);
+        dest.writeString(rfc);
+        dest.writeString(ciudad);
+        dest.writeDouble(saldo);
     }
 }

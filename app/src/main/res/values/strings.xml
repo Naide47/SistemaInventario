@@ -1,20 +1,39 @@
 <resources>
 <!--    General-->
     <string name="app_name">SistemaInventario</string>
-    <string name="nav_subgroup">Comercio</string>
-    <string name="drawer_open">Abrir drawer</string>
-    <string name="drawer_close">Cerrar drawer</string>
 
-    <string name="hello_blank_fragment">Flagmento por defecto</string>
 
+<!--    Registros (Vendedores, Clientes, Proveedores y Productos)-->
     <string name="regs_title">Registros</string>
+    <string name="nav_subgroup">Comercio</string>
+    <string name="txt_numero">Número (No.)</string>
+    <string name="txt_nombre">Nombre</string>
+    <string name="txt_calle">Calle</string>
+    <string name="txt_colonia">Colonia</string>
+    <string name="txt_telefono">Telefono</string>
+    <string name="txt_email">Email</string>
+    <string name="txt_ciudad">Ciudad</string>
+    <string name="txt_rfc">RFC</string>
+    <string name="txt_comisiones">Comisiones</string>
+    <string name="txt_saldo">Saldo</string>
+<!--    Vendedores-->
     <string name="regs_vends_title">Vendedores</string>
+<!--    Clientes-->
     <string name="regs_cls_title">Clientes</string>
+<!--    Proveedores-->
     <string name="regs_prov_title">Proveedores</string>
+<!--    Productos-->
     <string name="regs_prod_title">Productos</string>
 
+<!--    Compras-->
     <string name="comp_title">Compras</string>
 
+<!--    Ventas-->
     <string name="vent_title">Ventas</string>
+
+    <!--    Ignorar-->
+    <string name="drawer_open">Abrir drawer</string>
+    <string name="drawer_close">Cerrar drawer</string>
+    <string name="hello_blank_fragment">Fragmento por defecto</string>
 
 </resources>

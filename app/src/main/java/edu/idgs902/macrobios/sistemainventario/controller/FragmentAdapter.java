@@ -24,15 +24,16 @@ public class FragmentAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
 
         switch (position) {
-            case 2:
+            case 1:
                 return new ClienteFragment();
-            case 3:
+            case 2:
                 return new ProveedorFragment();
-            case 4:
+            case 3:
                 return new ProductoFragment();
             default:
                 return new VendedorFragment();
         }
+
     }
 
     @Override
