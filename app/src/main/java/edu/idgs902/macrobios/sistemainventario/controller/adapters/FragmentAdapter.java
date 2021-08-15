@@ -6,9 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import edu.idgs902.macrobios.sistemainventario.R;
 import edu.idgs902.macrobios.sistemainventario.view.tabs.ClienteFragment;
-import edu.idgs902.macrobios.sistemainventario.view.tabs.ProductoFragment;
+import edu.idgs902.macrobios.sistemainventario.view.tabs.producto.ProductoFragment;
 import edu.idgs902.macrobios.sistemainventario.view.tabs.ProveedorFragment;
 import edu.idgs902.macrobios.sistemainventario.view.tabs.VendedorFragment;
 

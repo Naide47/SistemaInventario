@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.tabs.producto.AccionesProductoActivity">
+
+    <TextView
+        android:id="@+id/edtProd_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/txt_detalles"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="60dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtProd_titulo">
+
+        <TableLayout
+            android:id="@+id/edtProd_table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:labelFor="@+id/edtProd_edtNu"
+                    android:text="@string/txt_numero"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/edtProd_edtNu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:labelFor="@+id/edtProd_edtNombre"
+                    android:text="@string/txt_nombre"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/edtProd_edtNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName" />
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/prod_txt_linea"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/edtProd_spnLinea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:prompt="@string/txt_seleccionar"
+                    android:spinnerMode="dialog" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:labelFor="@+id/edtProd_edtExistencia"
+                    android:text="@string/prod_txt_existencia"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/edtProd_edtExistencia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="number" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:labelFor="@+id/edtProd_edtPCosto"
+                    android:text="@string/prod_txt_pcosto"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/edtProd_edtPCosto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:labelFor="@+id/edtProd_edtPPromedio"
+                    android:text="@string/prod_txt_ppromedio"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/edtProd_edtPPromedio"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:labelFor="@+id/edtProd_edtPMayor"
+                    android:text="@string/prod_txt_pmayor"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/edtProd_edtPMayor"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="32dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:labelFor="@+id/edtProd_edtPMenor"
+                    android:text="@string/prod_txt_pmenor"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/edtProd_edtPMenor"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal" />
+            </TableRow>
+
+        </TableLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:paddingStart="16dp"
+            android:paddingTop="32dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="32dp">
+
+            <Button
+                android:id="@+id/edtProd_btnModificar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="@string/btn_modificar" />
+
+            <Button
+                android:id="@+id/edtProd_btnAceptar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="@string/btn_aceptar" />
+
+            <Button
+                android:id="@+id/edtProd_btnEliminar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edtProd_btnModificar"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/danger"
+                android:text="@string/btn_eliminar"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/edtProd_btnCancelar"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="32dp"
+                android:text="@string/btn_cancelar"
+                android:textColor="@color/danger" />
+
+            <Button
+                android:id="@+id/edtProd_btnVolver"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="32dp"
+                android:text="@string/btn_volver" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

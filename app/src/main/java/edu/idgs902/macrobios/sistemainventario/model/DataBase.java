@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DataBase extends SQLiteOpenHelper {
 
     // Base de datos y version
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
     private static final String DB_NAME = "Inventario";
 
     // Tabla Persona
@@ -35,6 +35,7 @@ public class DataBase extends SQLiteOpenHelper {
     // Tabla Producto
     public static final String T_PRODUCTO = "Producto";
     public static final String K_PRODUCTO_NOPRODUCTO = "noProducto";
+    public static final String K_PRODUCTO_NUPRODUCTO = "nuProducto";
     public static final String K_PRODUCTO_NOMBRE = "nombre";
     public static final String K_PRODUCTO_LINEA = "linea";
     public static final String K_PRODUCTO_EXISTENCIA = "existencia";
@@ -113,7 +114,8 @@ public class DataBase extends SQLiteOpenHelper {
                 K_PERSONA_NOPERSONA + " INTEGER," +
                 K_VENDEDOR_COMISIONES + " REAL DEFAULT 0)");
         db.execSQL("CREATE TABLE " + T_PRODUCTO + " (" +
-                K_PRODUCTO_NOPRODUCTO + " TEXT PRIMARY KEY," +
+                K_PRODUCTO_NOPRODUCTO + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                K_PRODUCTO_NUPRODUCTO + " TEXT UNIQUE," +
                 K_PRODUCTO_NOMBRE + " TEXT," +
                 K_PRODUCTO_LINEA + " TEXT," +
                 K_PRODUCTO_EXISTENCIA + " INTEGER," +
@@ -122,7 +124,7 @@ public class DataBase extends SQLiteOpenHelper {
                 K_PRODUCTO_P_VENTA_MAYOR + " REAL DEFAULT 0," +
                 K_PRODUCTO_P_VENTA_MENOR + " REAL DEFAULT 0)");
         db.execSQL("CREATE TABLE " + T_COMPRA + " (" +
-                K_COMPRA_NOCOMPRA+ " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                K_COMPRA_NOCOMPRA + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 K_COMPRA_NOEXTERNOPROVEEDOR + " INTEGER," +
                 K_COMPRA_FECHA + " TEXT," +
                 K_COMPRA_F_R + " TEXT," +
@@ -146,20 +148,20 @@ public class DataBase extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + T_DETALLECOMPRA + " (" +
                 K_DETALLECOMPRA_NODETALLECOMPRA + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 K_COMPRA_NOCOMPRA + " INTEGER," +
-                K_PRODUCTO_NOPRODUCTO +" INTEGER," +
-                K_DETALLECOMPRA_CANTIDAD +" INTEGER," +
-                K_DETALLECOMPRA_PRECIOCOSTO +" REAL)");
+                K_PRODUCTO_NOPRODUCTO + " INTEGER," +
+                K_DETALLECOMPRA_CANTIDAD + " INTEGER," +
+                K_DETALLECOMPRA_PRECIOCOSTO + " REAL)");
         db.execSQL("CREATE TABLE " + T_DETALLEVENTA + " (" +
                 K_DETALLEVENTA_NODETALLEVENTA + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 K_VENTA_NOVENTA + " INTEGER," +
-                K_PRODUCTO_NOPRODUCTO +" INTEGER," +
-                K_DETALLEVENTA_CANTIDAD +" INTEGER," +
-                K_DETALLEVENTA_PRECIOVENTA +" REAL)");
+                K_PRODUCTO_NOPRODUCTO + " INTEGER," +
+                K_DETALLEVENTA_CANTIDAD + " INTEGER," +
+                K_DETALLEVENTA_PRECIOVENTA + " REAL)");
         db.execSQL("CREATE TABLE " + T_HISTORICOPRODUCTO + " (" +
                 K_HISTORICOPRODUCTO_NOHISTORICO + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                K_PRODUCTO_NOPRODUCTO +" TEXT," +
-                K_HISTORICOPRODUCTO_COSTO +" REAL," +
-                K_HISTORICOPRODUCTO_CANTIDAD +" INTEGER)");
+                K_PRODUCTO_NOPRODUCTO + " TEXT," +
+                K_HISTORICOPRODUCTO_COSTO + " REAL," +
+                K_HISTORICOPRODUCTO_CANTIDAD + " INTEGER)");
     }
 
     @Override

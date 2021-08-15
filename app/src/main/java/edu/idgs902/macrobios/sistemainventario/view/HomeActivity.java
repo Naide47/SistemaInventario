@@ -95,4 +95,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setTitle(item.getTitle());
         drawerLayout.closeDrawers();
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
+    }
 }
