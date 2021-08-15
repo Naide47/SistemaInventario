@@ -103,7 +103,7 @@ public class DataBase extends SQLiteOpenHelper {
                 K_PERSONA_EMAIL + " TEXT)");
         db.execSQL("CREATE TABLE " + T_EXTERNO + " (" +
                 K_EXTERNO_NOEXTERNO + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                K_PERSONA_NOPERSONA + " INTEGER," +
+                K_PERSONA_NOPERSONA + " INTEGER, " +
                 K_EXTERNO_TIPO + " INTEGER," +
                 K_EXTERNO_RFC + " TEXT," +
                 K_EXTERNO_CIUDAD + " TEXT," +
