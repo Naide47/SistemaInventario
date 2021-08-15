@@ -5,7 +5,8 @@ import android.os.Parcelable;
 
 public class Producto implements Parcelable {
 
-    private String noProducto; //Nùmero
+    private int noProducto; //Nùmero
+    private String nuProducto;
     private String nombre;
     private String linea;
     private int existencia;
@@ -14,8 +15,9 @@ public class Producto implements Parcelable {
     private double p_venta_mayor;
     private double p_venta_menor;
 
-    public Producto(String noProducto, String nombre, String linea, int existencia, double p_costo, double p_promedio, double p_venta_mayor, double p_venta_menor) {
+    public Producto(int noProducto, String nuProducto, String nombre, String linea, int existencia, double p_costo, double p_promedio, double p_venta_mayor, double p_venta_menor) {
         this.noProducto = noProducto;
+        this.nuProducto = nuProducto;
         this.nombre = nombre;
         this.linea = linea;
         this.existencia = existencia;
@@ -25,7 +27,8 @@ public class Producto implements Parcelable {
         this.p_venta_menor = p_venta_menor;
     }
 
-    public Producto(String nombre, String linea, int existencia, double p_costo, double p_promedio, double p_venta_mayor, double p_venta_menor) {
+    public Producto(String nuProducto, String nombre, String linea, int existencia, double p_costo, double p_promedio, double p_venta_mayor, double p_venta_menor) {
+        this.nuProducto = nuProducto;
         this.nombre = nombre;
         this.linea = linea;
         this.existencia = existencia;
@@ -33,10 +36,17 @@ public class Producto implements Parcelable {
         this.p_promedio = p_promedio;
         this.p_venta_mayor = p_venta_mayor;
         this.p_venta_menor = p_venta_menor;
+    }
+
+    public Producto(String nuProducto, String nombre, String linea) {
+        this.nuProducto = nuProducto;
+        this.nombre = nombre;
+        this.linea = linea;
     }
 
     protected Producto(Parcel in) {
-        noProducto = in.readString();
+        noProducto = in.readInt();
+        nuProducto = in.readString();
         nombre = in.readString();
         linea = in.readString();
         existencia = in.readInt();
@@ -58,7 +68,10 @@ public class Producto implements Parcelable {
         }
     };
 
-    public String getNoProducto() {
+    public String getNuProducto() {
+        return nuProducto;
+    }
+    public int getNoProducto() {
         return noProducto;
     }
 
@@ -97,7 +110,8 @@ public class Producto implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(noProducto);
+        dest.writeInt(noProducto);
+        dest.writeString(nuProducto);
         dest.writeString(nombre);
         dest.writeString(linea);
         dest.writeInt(existencia);
@@ -105,5 +119,20 @@ public class Producto implements Parcelable {
         dest.writeDouble(p_promedio);
         dest.writeDouble(p_venta_mayor);
         dest.writeDouble(p_venta_menor);
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "noProducto=" + noProducto +
+                ", nuProducto='" + nuProducto + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", linea='" + linea + '\'' +
+                ", existencia=" + existencia +
+                ", p_costo=" + p_costo +
+                ", p_promedio=" + p_promedio +
+                ", p_venta_mayor=" + p_venta_mayor +
+                ", p_venta_menor=" + p_venta_menor +
+                '}';
     }
 }
