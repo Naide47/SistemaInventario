@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.proveedor.ModificarProveedor">
+
+    <Button
+        android:id="@+id/btnAtras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Volver"
+        android:textSize="20dp"
+        android:drawableLeft="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ScrollView
+        android:layout_width="1286dp"
+        android:layout_height="758dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAtras">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
+                android:text="Provedores"
+                android:textSize="50dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/datos"
+                    android:layout_width="900dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="60dp"
+                    android:layout_toLeftOf="@+id/botones"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="190dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/txt_numero"
+                            android:textSize="30dp" />
+
+                        <EditText
+                            android:id="@+id/NoProveedor"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="number"
+                            android:textSize="30dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="190dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/txt_nombre"
+                            android:textSize="30dp" />
+
+                        <EditText
+                            android:id="@+id/NombreProveedor"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="text"
+                            android:textSize="30dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="190dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/txt_calle"
+                            android:textSize="30dp" />
+
+                        <EditText
+                            android:id="@+id/CalleProveedor"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="text"
+                            android:textSize="30dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="190dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/txt_colonia"
+                            android:textSize="30dp" />
+
+                        <EditText
+                            android:id="@+id/ColoniaProveedor"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="text"
+                            android:textSize="30dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="190dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/txt_ciudad"
+                            android:textSize="30dp" />
+
+                        <EditText
+                            android:id="@+id/CiudadProveedor"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="text"
+                            android:textSize="30dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="190dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/txt_rfc"
+                            android:textSize="30dp" />
+
+                        <EditText
+                            android:id="@+id/RfcProveedor"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="text"
+                            android:textSize="30dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="190dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/txt_telefono"
+                            android:textSize="30dp" />
+
+                        <EditText
+                            android:id="@+id/TelefonoProveedor"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="text"
+                            android:textSize="30dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="190dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/txt_email"
+                            android:textSize="30dp" />
+
+                        <EditText
+                            android:id="@+id/EmailProveedor"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="textEmailAddress"
+                            android:textSize="30dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="190dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/txt_saldo"
+                            android:textSize="30dp" />
+
+                        <EditText
+                            android:id="@+id/SaldoProveedor"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="numberDecimal"
+                            android:textSize="30dp"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/botones"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/datos"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btnActivar"
+                        android:layout_width="200dp"
+                        android:layout_height="90dp"
+                        android:layout_marginLeft="70dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Habilitar Edición"
+                        android:textSize="20dp"
+                        android:drawableLeft="@drawable/ic_baseline_remove_red_eye_24"/>
+
+                    <Button
+                        android:id="@+id/btnModificacionProveedor"
+                        android:layout_width="250dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Confirmar Modificacion"
+                        android:textSize="20dp"
+                        android:drawableLeft="@drawable/ic_baseline_check_box_24"/>
+
+                    <Button
+                        android:id="@+id/btnBajaProveedor"
+                        android:layout_width="200dp"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="70dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Baja"
+                        android:textSize="20dp"
+                        android:drawableLeft="@drawable/ic_baseline_delete_forever_24"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,8 +9,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SistemaInventario">
+
+        <activity android:name=".view.proveedor.ModificarProveedor"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.proveedor.AgregarProveedor"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.ModificarCliente"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.AgregarCliente"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+
         <activity android:name=".view.tabs.producto.AccionesProductoActivity"></activity>
         <activity android:name=".view.tabs.producto.AgregarProductoActivity" />
+
         <activity
             android:name=".view.HomeActivity"
             android:configChanges="orientation|keyboardHidden"

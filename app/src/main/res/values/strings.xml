@@ -28,7 +28,6 @@
     <string name="txt_eliminar_cuerpo">¿Estas seguro de eliminar est%1$s %2$s?</string>
     <string name="txt_eliminar_exito">%1$s %2$s fue eliminad%3$s con exito.</string>
 
-
     <!--    Registros (Vendedores, Clientes, Proveedores y Productos)-->
     <string name="regs_title">Registros</string>
     <string name="nav_subgroup">Comercio</string>
@@ -40,7 +39,6 @@
     <string name="txt_email">Email</string>
     <string name="txt_ciudad">Ciudad</string>
     <string name="txt_rfc">RFC</string>
-    <string name="txt_comisiones">Comisiones</string>
     <string name="txt_saldo">Saldo</string>
     <!--    Vendedores-->
     <string name="regs_vends_title">Vendedores</string>
@@ -95,7 +93,9 @@
     <!--    Ignorar-->
     <string name="drawer_open">Abrir drawer</string>
     <string name="drawer_close">Cerrar drawer</string>
+
     <string name="hello_blank_fragment">Fragmento por defecto</string>
     <string name="seleccionar">SELECCIONAR</string>
+
 
 </resources>
