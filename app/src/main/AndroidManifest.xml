@@ -10,14 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SistemaInventario">
         <activity
+            android:name=".view.vendedor.AgregarVendedor"
+            android:exported="true" />
+        <activity
             android:name=".view.HomeActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,9 +1,9 @@
 <resources>
-<!--    General-->
+    <!--    General-->
     <string name="app_name">SistemaInventario</string>
 
 
-<!--    Registros (Vendedores, Clientes, Proveedores y Productos)-->
+    <!--    Registros (Vendedores, Clientes, Proveedores y Productos)-->
     <string name="regs_title">Registros</string>
     <string name="nav_subgroup">Comercio</string>
     <string name="txt_numero">Número (No.)</string>
@@ -16,19 +16,19 @@
     <string name="txt_rfc">RFC</string>
     <string name="txt_comisiones">Comisiones</string>
     <string name="txt_saldo">Saldo</string>
-<!--    Vendedores-->
+    <!--    Vendedores-->
     <string name="regs_vends_title">Vendedores</string>
-<!--    Clientes-->
+    <!--    Clientes-->
     <string name="regs_cls_title">Clientes</string>
-<!--    Proveedores-->
+    <!--    Proveedores-->
     <string name="regs_prov_title">Proveedores</string>
-<!--    Productos-->
+    <!--    Productos-->
     <string name="regs_prod_title">Productos</string>
 
-<!--    Compras-->
+    <!--    Compras-->
     <string name="comp_title">Compras</string>
 
-<!--    Ventas-->
+    <!--    Ventas-->
     <string name="vent_title">Ventas</string>
 
     <!--    Ignorar-->
