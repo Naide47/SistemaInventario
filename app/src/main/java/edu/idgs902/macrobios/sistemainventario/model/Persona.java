@@ -12,6 +12,9 @@ public class Persona implements Parcelable {
     private String telefono;
     private String email;
 
+    public Persona () {
+    }
+
     public Persona(int noPersona, String nombre, String calle, String colonia, String telefono, String email) {
         this.noPersona = noPersona;
         this.nombre = nombre;

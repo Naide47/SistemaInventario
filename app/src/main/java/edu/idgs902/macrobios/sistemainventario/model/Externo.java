@@ -10,6 +10,7 @@ public class Externo extends Persona{
     private String rfc;
     private String ciudad;
     private double saldo;
+    private int noPersona;
 
     public Externo(int persona_no, String nombre, String calle, String colonia, String telefono, String email, int noExterno, int tipo, String rfc, String ciudad, double saldo) {
         super(persona_no, nombre, calle, colonia, telefono, email);
@@ -20,12 +21,48 @@ public class Externo extends Persona{
         this.saldo = saldo;
     }
 
-    public Externo(String nombre, String calle, String colonia, String telefono, String email, int tipo, String rfc, String ciudad, double saldo) {
-        super(nombre, calle, colonia, telefono, email);
+    public Externo(int persona_no, String nombre, String calle, String colonia, String telefono, String email, int tipo, String rfc, String ciudad, double saldo) {
+        super(persona_no, nombre, calle, colonia, telefono, email);
         this.tipo = tipo;
         this.rfc = rfc;
         this.ciudad = ciudad;
         this.saldo = saldo;
+    }
+
+    public Externo(int noExterno, String rfc, String ciudad, double saldo){
+        super();
+        this.noExterno = noExterno;
+        this.rfc = rfc;
+        this.ciudad = ciudad;
+        this.saldo = saldo;
+    }
+
+    public Externo(int noExterno, int tipo, String rfc, String ciudad, double saldo){
+        super();
+        this.noExterno = noExterno;
+        this.tipo = tipo;
+        this.rfc = rfc;
+        this.ciudad = ciudad;
+        this.saldo = saldo;
+    }
+
+    public Externo(int noExterno, int tipo, String rfc, String ciudad, double saldo, int noPersona){
+        super();
+        this.noExterno = noExterno;
+        this.tipo = tipo;
+        this.rfc = rfc;
+        this.ciudad = ciudad;
+        this.saldo = saldo;
+        this.noPersona = noPersona;
+    }
+
+    public Externo(int tipo, String rfc, String ciudad, double saldo, int noPersona){
+        super();
+        this.tipo = tipo;
+        this.rfc = rfc;
+        this.ciudad = ciudad;
+        this.saldo = saldo;
+        this.noPersona = noPersona;
     }
 
     private Externo(Parcel in) {
@@ -55,6 +92,11 @@ public class Externo extends Persona{
 
     public double getSaldo() {
         return saldo;
+    }
+
+    @Override
+    public int getNoPersona() {
+        return noPersona;
     }
 
     public static final Parcelable.Creator<Externo> CREATOR = new Creator<Externo>() {

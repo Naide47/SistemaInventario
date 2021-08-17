@@ -1,7 +1,32 @@
 <resources>
     <!--    General-->
     <string name="app_name">SistemaInventario</string>
+    <string name="txt_ok">Ok</string>
+    <string name="txt_buscador">Buscar…</string>
+    <string name="txt_seleccionar">Seleccionar</string>
 
+    <!--    Botones-->
+    <string name="btn_aceptar">Aceptar</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_volver">Volver</string>
+    <string name="btn_modificar">Modificar</string>
+    <string name="btn_eliminar">Eliminar</string>
+    <string name="txt_detalles">Detalles</string>
+
+    <!--    Alertas-->
+    <string name="txt_agregado_titulo">Agregado</string>
+    <string name="txt_agredado_cuerpo">%1$s %2$s fue agregado con exito</string>
+    <string name="txt_actualizado_titulo">Actualizado</string>
+    <string name="txt_actualizado_cuerpo">%1$s %2$s fue actualizado con exito</string>
+    <!--    <string name="txt_acciones_titlo">Acciones</string>-->
+    <!--    <string-array name="txt_acciones_opciones">-->
+    <!--        <item>Ver o editar</item>-->
+    <!--        <item>Eliminar</item>-->
+    <!--        <item>Cancelar</item>-->
+    <!--    </string-array>-->
+    <string name="txt_eliminar_titulo">Eliminar</string>
+    <string name="txt_eliminar_cuerpo">¿Estas seguro de eliminar est%1$s %2$s?</string>
+    <string name="txt_eliminar_exito">%1$s %2$s fue eliminad%3$s con exito.</string>
 
     <!--    Registros (Vendedores, Clientes, Proveedores y Productos)-->
     <string name="regs_title">Registros</string>
@@ -14,7 +39,6 @@
     <string name="txt_email">Email</string>
     <string name="txt_ciudad">Ciudad</string>
     <string name="txt_rfc">RFC</string>
-    <string name="txt_comisiones">Comisiones</string>
     <string name="txt_saldo">Saldo</string>
     <!--    Vendedores-->
     <string name="regs_vends_title">Vendedores</string>
@@ -24,6 +48,41 @@
     <string name="regs_prov_title">Proveedores</string>
     <!--    Productos-->
     <string name="regs_prod_title">Productos</string>
+    <string name="prod_txt_linea">Linea</string>
+    <string name="prod_txt_existencia">Existencia</string>
+    <string name="prod_txt_pcosto">Precio costo</string>
+    <string name="prod_txt_ppromedio">Precio promedio</string>
+    <string name="prod_txt_pmayor">Precio al por mayor</string>
+    <string name="prod_txt_pmenor">Precio al por menor</string>
+    <string name="prod_txt_agregar">Agregar producto</string>
+    <string name="prod_txt_editar">Editar producto</string>
+
+    <string-array name="prod_categorias">
+        <item>@string/seleccionar</item>
+        <item>Hombre 25 – 30</item>
+        <item>Joven 22 – 25</item>
+        <item>Niño 18 – 21</item>
+        <item>Niño 15 – 17</item>
+        <item>Niño 12 – 14</item>
+        <item>Dama 22 – 26</item>
+        <item>Niña 18 – 21</item>
+        <item>Niña 15 – 17</item>
+        <item>Niña 12 – 14</item>
+        <item>BEBE 10 – 12</item>
+    </string-array>
+
+    <string-array name="prod_categorias2">
+        <item>Hombre 25 – 30</item>
+        <item>Joven 22 – 25</item>
+        <item>Niño 18 – 21</item>
+        <item>Niño 15 – 17</item>
+        <item>Niño 12 – 14</item>
+        <item>Dama 22 – 26</item>
+        <item>Niña 18 – 21</item>
+        <item>Niña 15 – 17</item>
+        <item>Niña 12 – 14</item>
+        <item>BEBE 10 – 12</item>
+    </string-array>
 
     <!--    Compras-->
     <string name="comp_title">Compras</string>
@@ -34,6 +93,9 @@
     <!--    Ignorar-->
     <string name="drawer_open">Abrir drawer</string>
     <string name="drawer_close">Cerrar drawer</string>
+
     <string name="hello_blank_fragment">Fragmento por defecto</string>
+    <string name="seleccionar">SELECCIONAR</string>
+
 
 </resources>
