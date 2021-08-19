@@ -92,54 +92,10 @@ public class ProductoFragment extends Fragment implements ProductoAdapter.OnItem
 
     @Override
     public void onItemClick(int position) {
-//        AlertDialog.Builder alertaAcciones = new AlertDialog.Builder(getContext());
-//        alertaAcciones.setTitle(getString(R.string.txt_acciones_titlo));
-//        alertaAcciones.setItems(getResources().getStringArray(R.array.txt_acciones_opciones), (d, w) -> {
-//            switch (w) {
-//                case 0:
-//                    Intent intent = new Intent(getActivity(), AccionesProductoActivity.class);
-//                    intent.putExtra("producto",productos.get(position));
-//                    startActivity(intent);
-//                    Log.i("EditarProducto", "Se intento editar el producto " + position + "(" + (position + 1) + ")");
-//                    d.dismiss();
-//                    break;
-//                case 1:
-//                    d.dismiss();
-//                    alertaEliminar(productos.get(position).getNuProducto());
-//                    break;
-//            }
-//        });
-//
-//        alertaAcciones.create().show();
-
         Intent intent = new Intent(getActivity(), AccionesProductoActivity.class);
         intent.putExtra("producto", productos.get(position));
         startActivity(intent);
     }
-
-//    private void alertaEliminar(String nuProducto) {
-//        AlertDialog.Builder alertaEliminar = new AlertDialog.Builder(getContext());
-//        String mensaje = String.format(getResources().getString(R.string.txt_eliminar_cuerpo), "e", "producto");
-//        String exito = String.format(getResources().getString(R.string.txt_eliminar_exito), "El", "producto", "o");
-//
-//        alertaEliminar.setTitle(R.string.txt_eliminar_titulo);
-//        alertaEliminar.setMessage(mensaje);
-//        alertaEliminar.setPositiveButton(getString(R.string.btn_aceptar), (d, w) -> {
-//            if (controller.deleteProducto(nuProducto)) {
-//                Toast.makeText(getContext(), exito, Toast.LENGTH_LONG).show();
-//                productos = controller.getProductos();
-//                adapter.actualizarList(productos);
-//            } else {
-//                Log.e("prodEliminar", "NO SE ELIMINO");
-//            }
-//            d.dismiss();
-//        });
-//        alertaEliminar.setNegativeButton(getString(R.string.btn_cancelar), (d, w) -> {
-//            d.dismiss();
-//        });
-//
-//        alertaEliminar.create().show();
-//    }
 
 
 }

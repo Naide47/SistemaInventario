@@ -26,10 +26,10 @@ public class ControllerPersona extends DataBase {
     }
 
     public long addPersona(Persona persona) {
-        conection = new DataBase(context);
-        sqlite = conection.getWritableDatabase();
         long result = -1;
         try {
+            conection = new DataBase(context);
+            sqlite = conection.getWritableDatabase();
             if (sqlite != null) {
                 values = new ContentValues();
                 values.put(K_PERSONA_NOMBRE, persona.getNombre());
@@ -49,12 +49,11 @@ public class ControllerPersona extends DataBase {
 
     public Persona getPersona(int noPersona) {
         Persona persona = null;
-        conection = new DataBase(context);
-        sqlite = conection.getWritableDatabase();
-        Cursor cursor = null;
         try {
+            conection = new DataBase(context);
+            sqlite = conection.getReadableDatabase();
             if (sqlite != null) {
-                cursor = sqlite.rawQuery("SELECT * FROM " + T_PERSONA + " WHERE " + K_PERSONA_NOPERSONA + "=?",
+                Cursor cursor = sqlite.rawQuery("SELECT * FROM " + T_PERSONA + " WHERE " + K_PERSONA_NOPERSONA + "=?",
                         new String[]{String.valueOf(noPersona)});
                 if (cursor.moveToFirst()) {
                     persona = new Persona(cursor.getInt(cursor.getColumnIndex(K_PERSONA_NOPERSONA)),
@@ -119,13 +118,12 @@ public class ControllerPersona extends DataBase {
 
     public List<Persona> getPersonas() {
         List<Persona> personas = null;
-        conection = new DataBase(context);
-        sqlite = conection.getWritableDatabase();
-        Cursor cursor = null;
         try {
+            conection = new DataBase(context);
+            sqlite = conection.getReadableDatabase();
             if (sqlite != null) {
                 personas = new ArrayList<>();
-                cursor = sqlite.rawQuery("SELECT * FROM " + T_PERSONA, null);
+                Cursor cursor = sqlite.rawQuery("SELECT * FROM " + T_PERSONA, null);
                 if (cursor.moveToFirst()) {
                     while (!cursor.isAfterLast()) {
                         Persona persona = new Persona(cursor.getInt(cursor.getColumnIndex(K_PERSONA_NOPERSONA)),

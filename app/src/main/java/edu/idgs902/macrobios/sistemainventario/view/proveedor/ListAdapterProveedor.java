@@ -31,11 +31,13 @@ public class ListAdapterProveedor extends RecyclerView.Adapter<ListAdapterProvee
     }
 
     @Override
-    public int getItemCount() { return mData.size(); }
+    public int getItemCount() {
+        return mData.size();
+    }
 
     @Override
     public ListAdapterProveedor.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.list_element_proveedor, null);
+        View view = mInflater.inflate(R.layout.list_element, parent, false);
         return new ListAdapterProveedor.ViewHolder(view, mOnProveedorListener);
     }
 
@@ -44,29 +46,36 @@ public class ListAdapterProveedor extends RecyclerView.Adapter<ListAdapterProvee
         holder.bindData(mData.get(position));
     }
 
-    public void setItems(List<ListElemetProveedor> items) { mData=items; }
+    public void setItems(List<ListElemetProveedor> items) {
+        mData = items;
+        notifyDataSetChanged();
+    }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        ImageView iconImage;
-        TextView nombre, ciudad, saldo;
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        //        ImageView iconImage;
+//        TextView nombre, ciudad, saldo;
+        ImageView list_icono;
+        TextView list_nombre; //Para el nombre;
+        TextView list_ciudad, list_saldo;
         OnProveedorListener onProveedorListener;
 
         ViewHolder(View itemView, OnProveedorListener onProveedorListener) {
             super(itemView);
-            iconImage = itemView.findViewById(R.id.iconImageViewP);
-            nombre = itemView.findViewById(R.id.nombreViewP);
-            ciudad = itemView.findViewById(R.id.ciudadViewP);
-            saldo = itemView.findViewById(R.id.saldotViewP);
+            list_icono = itemView.findViewById(R.id.list_icono);
+            list_nombre = itemView.findViewById(R.id.list_titulo1);
+            list_ciudad = itemView.findViewById(R.id.list_subtitulo);
+            list_saldo = itemView.findViewById(R.id.list_adicional);
             this.onProveedorListener = onProveedorListener;
 
             itemView.setOnClickListener(this);
         }
 
         void bindData(final ListElemetProveedor item) {
-            iconImage.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
-            nombre.setText(item.getNombre());
-            ciudad.setText(item.getCiudad());
-            saldo.setText(item.getSaldo());
+            list_icono.setImageResource(R.drawable.ic_proveedor);
+            list_icono.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
+            list_nombre.setText(item.getNombre());
+            list_ciudad.setText(item.getCiudad());
+            list_saldo.setText(item.getSaldo());
         }
 
         @Override
@@ -75,7 +84,7 @@ public class ListAdapterProveedor extends RecyclerView.Adapter<ListAdapterProvee
         }
     }
 
-    public interface OnProveedorListener{
+    public interface OnProveedorListener {
         void onProveedorClick(int position);
     }
 

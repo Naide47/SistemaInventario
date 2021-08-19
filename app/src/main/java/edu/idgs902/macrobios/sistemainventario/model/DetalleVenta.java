@@ -9,6 +9,7 @@ public class DetalleVenta implements Parcelable {
     private Producto producto;
     private int cantidad_producto;
     private double precio_venta;
+    private boolean estado = true;
 
     public DetalleVenta(int noDetalleVenta, Producto producto, int cantidad_producto, double precio_venta) {
         this.noDetalleVenta = noDetalleVenta;
@@ -28,6 +29,7 @@ public class DetalleVenta implements Parcelable {
         producto = in.readParcelable(Producto.class.getClassLoader());
         cantidad_producto = in.readInt();
         precio_venta = in.readDouble();
+        estado = in.readInt() != 0;
     }
 
     public static final Creator<DetalleVenta> CREATOR = new Creator<DetalleVenta>() {
@@ -46,16 +48,40 @@ public class DetalleVenta implements Parcelable {
         return noDetalleVenta;
     }
 
+    public void setNoDetalleVenta(int noDetalleVenta) {
+        this.noDetalleVenta = noDetalleVenta;
+    }
+
     public Producto getProducto() {
         return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     public int getCantidad_producto() {
         return cantidad_producto;
     }
 
+    public void setCantidad_producto(int cantidad_producto) {
+        this.cantidad_producto = cantidad_producto;
+    }
+
     public double getPrecio_venta() {
         return precio_venta;
+    }
+
+    public void setPrecio_venta(double precio_venta) {
+        this.precio_venta = precio_venta;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     @Override
@@ -69,5 +95,6 @@ public class DetalleVenta implements Parcelable {
         dest.writeParcelable(producto, flags);
         dest.writeInt(cantidad_producto);
         dest.writeDouble(precio_venta);
+        dest.writeInt(estado ? 1 : 0);
     }
 }

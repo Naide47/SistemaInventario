@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DataBase extends SQLiteOpenHelper {
 
     // Base de datos y version
-    private static final int DB_VERSION = 2;
+    private static final int DB_VERSION = 3;
     private static final String DB_NAME = "Inventario";
 
     // Tabla Persona
@@ -159,7 +159,8 @@ public class DataBase extends SQLiteOpenHelper {
                 K_DETALLEVENTA_PRECIOVENTA + " REAL)");
         db.execSQL("CREATE TABLE " + T_HISTORICOPRODUCTO + " (" +
                 K_HISTORICOPRODUCTO_NOHISTORICO + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                K_PRODUCTO_NOPRODUCTO + " TEXT," +
+                K_COMPRA_NOCOMPRA + " INTEGER," +
+                K_PRODUCTO_NOPRODUCTO + " INTEGER," +
                 K_HISTORICOPRODUCTO_COSTO + " REAL," +
                 K_HISTORICOPRODUCTO_CANTIDAD + " INTEGER)");
     }

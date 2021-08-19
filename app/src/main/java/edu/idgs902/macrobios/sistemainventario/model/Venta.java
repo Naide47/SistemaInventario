@@ -20,7 +20,7 @@ public class Venta implements Parcelable {
     private double total_venta;
     private List<DetalleVenta> detallesVenta;
 
-    public Venta(int noVenta, Externo externo_cliente, Vendedor vendedor, String fecha, int comision, String f_r, int f_r_no, int total_pares, double suma, double iva, double total_venta) {
+    public Venta(int noVenta, Externo externo_cliente, Vendedor vendedor, String fecha, int comision, String f_r, int f_r_no, int total_pares, double suma, double iva, double total_venta, List<DetalleVenta> detallesVenta) {
         this.noVenta = noVenta;
         this.externo_cliente = externo_cliente;
         this.vendedor = vendedor;
@@ -32,9 +32,10 @@ public class Venta implements Parcelable {
         this.suma = suma;
         this.iva = iva;
         this.total_venta = total_venta;
+        this.detallesVenta = detallesVenta;
     }
 
-    public Venta(Externo externo_cliente, Vendedor vendedor, String fecha, int comision, String f_r, int f_r_no, int total_pares, double suma, double iva, double total_venta) {
+    public Venta(Externo externo_cliente, Vendedor vendedor, String fecha, int comision, String f_r, int f_r_no, int total_pares, double suma, double iva, double total_venta, List<DetalleVenta> detallesVenta) {
         this.externo_cliente = externo_cliente;
         this.vendedor = vendedor;
         this.fecha = fecha;
@@ -45,6 +46,7 @@ public class Venta implements Parcelable {
         this.suma = suma;
         this.iva = iva;
         this.total_venta = total_venta;
+        this.detallesVenta = detallesVenta;
     }
 
     protected Venta(Parcel in) {
@@ -116,6 +118,10 @@ public class Venta implements Parcelable {
 
     public double getTotal_venta() {
         return total_venta;
+    }
+
+    public List<DetalleVenta> getDetallesVenta() {
+        return detallesVenta;
     }
 
     @Override

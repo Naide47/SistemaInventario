@@ -80,7 +80,6 @@ public class AccionesProductoActivity extends AppCompatActivity {
     }
 
     private void colocarDatos() {
-        Log.i("producto", producto.toString());
         edtProd_edtNu.setText(producto.getNuProducto());
         edtProd_edtNombre.setText(producto.getNombre());
         edtProd_edtExistencia.setText(String.valueOf(producto.getExistencia()));
@@ -157,9 +156,9 @@ public class AccionesProductoActivity extends AppCompatActivity {
     }
 
     private void realizarEdicion() {
-        Log.i("realizarEdicion", "Entro");
+//        Log.i("realizarEdicion", "Entro");
         if (checkIsNotEmpty()) {
-            Log.i("realizarEdicion", "No esta vacio");
+//            Log.i("realizarEdicion", "No esta vacio");
             Producto producto = new Producto(this.producto.getNoProducto(),
                     edtProd_edtNu.getText().toString(),
                     edtProd_edtNombre.getText().toString(), edtProd_spnLinea.getSelectedItem().toString(),
@@ -168,25 +167,25 @@ public class AccionesProductoActivity extends AppCompatActivity {
                     Double.parseDouble(edtProd_edtPPromedio.getText().toString()),
                     Double.parseDouble(edtProd_edtPMayor.getText().toString()),
                     Double.parseDouble(edtProd_edtPMenor.getText().toString()));
-            Log.i("realizarEdicion", "Producto armado");
+//            Log.i("realizarEdicion", "Producto armado");
             if (cp.updateProducto(producto)) {
-                Log.i("realizarEdicion", "Actualizo");
+//                Log.i("realizarEdicion", "Actualizo");
                 AlertDialog.Builder dialog = new AlertDialog.Builder(AccionesProductoActivity.this);
                 dialog.setTitle(R.string.txt_actualizado_titulo);
-                String mensaje = String.format(getResources().getString(R.string.txt_actualizado_cuerpo), "El", "producto");
+                String mensaje = String.format(getResources().getString(R.string.txt_actualizado_cuerpo), "El", "producto", "o");
                 dialog.setMessage(mensaje);
                 dialog.setPositiveButton(R.string.txt_ok, (d, w) -> {
                     d.dismiss();
                     onBackPressed();
                 });
                 dialog.create().show();
-            } else {
-                Log.i("realizarEdicion", "No actualizo");
-                Toast.makeText(AccionesProductoActivity.this, "cp.updateProducto", Toast.LENGTH_LONG);
+            } //else {
+//                Log.i("realizarEdicion", "No actualizo");
+//                Toast.makeText(AccionesProductoActivity.this, "cp.updateProducto", Toast.LENGTH_LONG);
             }
-        } else
-            Log.i("realizarEdicion", "Esta vacio");
-            Toast.makeText(AccionesProductoActivity.this, "checkIsNotEmpty", Toast.LENGTH_LONG);
+//        } else
+//            Log.i("realizarEdicion", "Esta vacio");
+//            Toast.makeText(AccionesProductoActivity.this, "checkIsNotEmpty", Toast.LENGTH_LONG);
     }
 
     private void realizarEliminacion() {
@@ -199,11 +198,11 @@ public class AccionesProductoActivity extends AppCompatActivity {
         alertaEliminar.setPositiveButton(getString(R.string.btn_aceptar), (d, w) -> {
             if (cp.deleteProducto(producto.getNoProducto())) {
                 Toast.makeText(AccionesProductoActivity.this, exito, Toast.LENGTH_LONG).show();
-            } else {
-                Log.e("realizarEliminacion", "NO SE ELIMINO");
-            }
             d.dismiss();
             onBackPressed();
+            } //else {
+//                Log.e("realizarEliminacion", "NO SE ELIMINO");
+//            }
         });
         alertaEliminar.setNegativeButton(getString(R.string.btn_cancelar), (d, w) -> {
             d.dismiss();
