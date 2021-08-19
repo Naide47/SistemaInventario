@@ -16,9 +16,9 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 
 import edu.idgs902.macrobios.sistemainventario.R;
-import edu.idgs902.macrobios.sistemainventario.view.fragments.CompraFragment;
+import edu.idgs902.macrobios.sistemainventario.view.fragments.compra.CompraFragment;
 import edu.idgs902.macrobios.sistemainventario.view.fragments.RegistrosFragment;
-import edu.idgs902.macrobios.sistemainventario.view.fragments.VentaFragment;
+import edu.idgs902.macrobios.sistemainventario.view.fragments.venta.VentaFragment;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
