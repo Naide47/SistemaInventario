@@ -426,6 +426,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
+                android:scrollbars="horizontal"
                 android:text="0" />
 
             <TextView
@@ -440,6 +441,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
+                android:scrollbars="horizontal"
                 android:text="0.00" />
         </TableRow>
 
@@ -461,6 +463,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
+                android:scrollbars="horizontal"
                 android:text="0.00" />
         </TableRow>
 
@@ -482,6 +485,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
+                android:scrollbars="horizontal"
                 android:text="0.00" />
         </TableRow>
     </TableLayout>

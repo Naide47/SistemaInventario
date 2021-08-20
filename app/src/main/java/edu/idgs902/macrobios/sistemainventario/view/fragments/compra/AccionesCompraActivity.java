@@ -1,14 +1,8 @@
 package edu.idgs902.macrobios.sistemainventario.view.fragments.compra;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,6 +13,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.app.AlertDialog;
+//import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -26,14 +26,10 @@ import java.util.List;
 import edu.idgs902.macrobios.sistemainventario.R;
 import edu.idgs902.macrobios.sistemainventario.controller.ControllerCompra;
 import edu.idgs902.macrobios.sistemainventario.controller.ControllerExternos;
-import edu.idgs902.macrobios.sistemainventario.controller.ControllerProducto;
 import edu.idgs902.macrobios.sistemainventario.controller.adapters.DetalleCompraAdapter;
 import edu.idgs902.macrobios.sistemainventario.model.Compra;
 import edu.idgs902.macrobios.sistemainventario.model.DetalleCompra;
-import edu.idgs902.macrobios.sistemainventario.model.DetalleVenta;
 import edu.idgs902.macrobios.sistemainventario.model.Externo;
-import edu.idgs902.macrobios.sistemainventario.model.Producto;
-import edu.idgs902.macrobios.sistemainventario.view.tabs.producto.AccionesProductoActivity;
 
 public class AccionesCompraActivity extends AppCompatActivity implements DetalleCompraAdapter.AccionesLista, DatePickerDialog.OnDateSetListener {
 
@@ -183,7 +179,8 @@ public class AccionesCompraActivity extends AppCompatActivity implements Detalle
                 if (compra.getExterno_proveedor() == proveedor &&
                         compra.getFecha().equals(actComp_edtFecha.getText().toString()) &&
                         compra.getTotal_pares() == Integer.parseInt(actComp_txtTPares.getText().toString()) &&
-                        compra.getSuma() == Double.parseDouble(actComp_txtSuma.getText().toString())) {
+                        compra.getSuma() == Double.parseDouble(actComp_txtSuma.getText().toString()) &&
+                        compra.getTotal_compra() == Double.parseDouble(actComp_txtTotal.getText().toString())) {
                     mostrarToast("No se han registrado cambios");
                     return;
                 }
@@ -193,6 +190,7 @@ public class AccionesCompraActivity extends AppCompatActivity implements Detalle
                 compra.setSuma(Double.parseDouble(actComp_txtSuma.getText().toString()));
                 compra.setIva(Double.parseDouble(actComp_txtIva.getText().toString()));
                 compra.setTotal_compra(Double.parseDouble(actComp_txtTotal.getText().toString()));
+                compra.setDetallesCompra(adapter.getLista());
                 if (controllerCompra.updateCompra(compra)) {
                     AlertDialog.Builder alertaModificacion = new AlertDialog.Builder(AccionesCompraActivity.this);
                     alertaModificacion.setTitle(R.string.txt_actualizado_titulo);
@@ -246,13 +244,15 @@ public class AccionesCompraActivity extends AppCompatActivity implements Detalle
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (parent.getItemAtPosition(position).toString().equals(getString(R.string.cv_factura))) {
                     double suma = Double.parseDouble(actComp_txtSuma.getText().toString());
-                    double iva = suma * 1.16;
+
+                    double iva = suma * 0.16;
+
                     double total = suma + iva;
+
                     actComp_txtIva.setText(df.format(iva));
                     actComp_txtTotal.setText(df.format(total));
                 } else {
                     actComp_txtIva.setText(df.format(0.00));
-                    actComp_txtTotal.setText(df.format(0.00));
                     actComp_txtTotal.setText(actComp_txtSuma.getText());
                 }
 
@@ -268,19 +268,18 @@ public class AccionesCompraActivity extends AppCompatActivity implements Detalle
     private boolean checarEstaCompleto() {
         boolean estaCompleto = true;
         if (TextUtils.isEmpty(actComp_edtProveedor.getText())) {
-
             estaCompleto = false;
         }
         if (TextUtils.isEmpty(actComp_edtFecha.getText())) {
-
             estaCompleto = false;
         }
         if (actComp_txtTPares.getText().toString().equals(String.valueOf(0))) {
-
             estaCompleto = false;
         }
         if (actComp_txtSuma.getText().toString().equals(String.valueOf(0))) {
-
+            estaCompleto = false;
+        }
+        if (actComp_txtTotal.getText().toString().equals(String.valueOf(0))) {
             estaCompleto = false;
         }
         return estaCompleto;

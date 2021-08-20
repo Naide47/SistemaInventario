@@ -152,8 +152,8 @@ public class ControllerExternos extends DataBase {
     public List<Externo> getExternos() {
         List<Externo> externos = null;
         try {
-        conection = new DataBase(context);
-        sqlite = conection.getReadableDatabase();
+            conection = new DataBase(context);
+            sqlite = conection.getReadableDatabase();
             if (sqlite != null) {
                 externos = new ArrayList<>();
                 Cursor cursor = sqlite.rawQuery("SELECT * FROM " + T_EXTERNO, null);
@@ -166,6 +166,44 @@ public class ControllerExternos extends DataBase {
                                 cursor.getDouble(cursor.getColumnIndex(K_EXTERNO_SALDO)),
                                 cursor.getInt(cursor.getColumnIndex(K_PERSONA_NOPERSONA)));
                         externos.add(externo);
+                        cursor.moveToNext();
+                    }
+                }
+                cursor.close();
+                sqlite.close();
+            }
+        } catch (Exception ex) {
+            Log.e("getExtenos", ex.toString());
+        }
+        return externos;
+    }
+
+    public List<Externo> getExternosCompletos(int tipo) {
+        List<Externo> externos = null;
+        try {
+            conection = new DataBase(context);
+            sqlite = conection.getReadableDatabase();
+            if (sqlite != null) {
+                externos = new ArrayList<>();
+                Cursor cursor = sqlite.rawQuery("SELECT * FROM " + T_EXTERNO + " WHERE " +
+                        K_EXTERNO_TIPO + "=?", new String[]{String.valueOf(tipo)});
+                if (cursor.moveToFirst()) {
+                    ControllerPersona cp = new ControllerPersona(context, context);
+                    while (!cursor.isAfterLast()) {
+                        int noPersona = cursor.getInt(cursor.getColumnIndex(K_PERSONA_NOPERSONA));
+                        Persona personaAux = cp.getPersona(noPersona);
+                        Externo externoAux = new Externo(noPersona,
+                                personaAux.getNombre(),
+                                personaAux.getCalle(),
+                                personaAux.getColonia(),
+                                personaAux.getTelefono(),
+                                personaAux.getEmail(),
+                                cursor.getInt(cursor.getColumnIndex(K_EXTERNO_NOEXTERNO)),
+                                cursor.getInt(cursor.getColumnIndex(K_EXTERNO_TIPO)),
+                                cursor.getString(cursor.getColumnIndex(K_EXTERNO_RFC)),
+                                cursor.getString(cursor.getColumnIndex(K_EXTERNO_CIUDAD)),
+                                cursor.getDouble(cursor.getColumnIndex(K_EXTERNO_SALDO)));
+                        externos.add(externoAux);
                         cursor.moveToNext();
                     }
                 }
@@ -200,6 +238,7 @@ public class ControllerExternos extends DataBase {
         } catch (Exception ex) {
             Log.e("updateExterno", ex.toString());
         }
+        Log.e("updateSaldo", "" + (result != 0));
         return result != 0;
     }
 

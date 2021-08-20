@@ -1,4 +1,4 @@
-package edu.idgs902.macrobios.sistemainventario.controller;
+ package edu.idgs902.macrobios.sistemainventario.controller;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -126,7 +126,6 @@ public class ControllerCompra extends DataBase {
 
                 sqlite.close();
 
-
                 if (result == 1) {
 
                     ControllerDetalleCompra cdc = new ControllerDetalleCompra(context);
@@ -134,18 +133,12 @@ public class ControllerCompra extends DataBase {
 
                     boolean updateDetalles = cdc.updateDetalleCompra(nuevaCompra.getNoCompra(), nuevaCompra.getDetallesCompra());
 
-//                    Externo externo = ce.getExternoCompleto(compraAnterior.getExterno_proveedor().getNoExterno());
-//                    double saldoAnterior = externo.getSaldo() - compraAnterior.getTotal_compra();
-//                    boolean updateSaldoAnterior = ce.updateSaldo(externo.getNoExterno(), saldoAnterior);
-//
-//                    externo = ce.getExternoCompleto(nuevaCompra.getExterno_proveedor().getNoExterno());
-//                    double saldoActual = externo.getSaldo() + nuevaCompra.getTotal_compra();
-//                    boolean updateSaldoNuevo = ce.updateSaldo(externo.getNoExterno(), saldoActual);
+                    Externo externo = ce.getExternoCompleto(compraAnterior.getExterno_proveedor().getNoExterno());
+                    boolean updateSaldoAnterior = ce.updateSaldo(externo.getNoExterno(), -compraAnterior.getTotal_compra());
+                    externo = ce.getExternoCompleto(nuevaCompra.getExterno_proveedor().getNoExterno());
+                    boolean updateSaldoNuevo = ce.updateSaldo(externo.getNoExterno(), nuevaCompra.getTotal_compra());
 
-//                    if (!updateDetalles || !updateSaldoAnterior || !updateSaldoNuevo) {
-//                        result = 0;
-//                    }
-                    if (!updateDetalles) {
+                    if (!updateDetalles || !updateSaldoAnterior || !updateSaldoNuevo) {
                         result = 0;
                     }
                 }

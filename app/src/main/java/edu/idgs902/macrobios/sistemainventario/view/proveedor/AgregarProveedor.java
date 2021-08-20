@@ -35,8 +35,7 @@ public class AgregarProveedor extends AppCompatActivity {
         SaldoProveedor = findViewById(R.id.SaldoProveedor);
 
         findViewById(R.id.btnAtras).setOnClickListener(view -> {
-            Intent intent = new Intent(this, HomeActivity.class);
-            startActivity(intent);
+            onBackPressed();
         });
 
         findViewById(R.id.btnAltaProveedor).setOnClickListener(view -> {

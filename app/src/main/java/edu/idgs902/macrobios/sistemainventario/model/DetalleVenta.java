@@ -97,4 +97,15 @@ public class DetalleVenta implements Parcelable {
         dest.writeDouble(precio_venta);
         dest.writeInt(estado ? 1 : 0);
     }
+
+    @Override
+    public String toString() {
+        return "DetalleVenta{" +
+                "noDetalleVenta=" + noDetalleVenta +
+                ", producto=" + producto +
+                ", cantidad_producto=" + cantidad_producto +
+                ", precio_venta=" + precio_venta +
+                ", estado=" + estado +
+                '}';
+    }
 }

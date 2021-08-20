@@ -93,7 +93,7 @@ public class ControllerDetalleCompra extends DataBase {
     public boolean updateDetalleCompra(int noCompra, List<DetalleCompra> detallesCompra) {
         boolean result = true;
         try {
-            Log.e("updateDetalleCompra", "detallesCompra.size() != 0 " + (detallesCompra.size() != 0));
+
             if (detallesCompra.size() != 0) {
                 conn = new DataBase(context);
                 sqlite = conn.getWritableDatabase();
@@ -108,8 +108,6 @@ public class ControllerDetalleCompra extends DataBase {
                             K_DETALLECOMPRA_NODETALLECOMPRA + "=?",
                             new String[]{String.valueOf(detalleCompra.getNoDetalleCompra())}) != 0;
 
-                    Log.e("updateDetalleCompra", "updateHistorico " + update);
-
                     List<HistoricoProducto> historicoProductos = chp.getHistoricosPorProducto(detalleCompra.getProducto().getNoProducto());
                     boolean updateHistorico = chp.updateHistorico(
                             noCompra,
@@ -118,9 +116,6 @@ public class ControllerDetalleCompra extends DataBase {
                             detalleCompra.getPrecio_compra(),
                             historicoProductos.get(historicoProductos.size() - 1).getNoHistorico()
                     );
-
-                    Log.e("updateDetalleCompra", "updateHistorico " + (updateHistorico));
-
 
                     if (!update && !updateHistorico) {
                         result = false;
@@ -138,16 +133,17 @@ public class ControllerDetalleCompra extends DataBase {
     public boolean deleteDetalles(int noCompra) {
         int result = 0;
         try {
-            conn = new DataBase(context);
-            sqlite = conn.getReadableDatabase();
+            if (getDetallesCompra(noCompra) != null) {
+                conn = new DataBase(context);
+                sqlite = conn.getReadableDatabase();
 
-            result = sqlite.delete(T_DETALLECOMPRA,
-                    K_DETALLECOMPRA_NODETALLECOMPRA + "=?",
-                    new String[]{String.valueOf(noCompra)});
-
-            sqlite.close();
-
-        } catch (Exception ex) {
+                result = sqlite.delete(T_DETALLECOMPRA,
+                        K_COMPRA_NOCOMPRA + "=?",
+                        new String[]{String.valueOf(noCompra)});
+                sqlite.close();
+            }
+        } catch (
+                Exception ex) {
             ex.printStackTrace();
         }
         return result != 0;
