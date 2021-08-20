@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.idgs902.macrobios.sistemainventario.R;
+import edu.idgs902.macrobios.sistemainventario.controller.ControllerVendedor;
 import edu.idgs902.macrobios.sistemainventario.model.Vendedor;
 
 public class ReporteVendedorActivity extends AppCompatActivity {
@@ -20,15 +21,16 @@ public class ReporteVendedorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reporte_vendedor);
 
-        List<Vendedor> vendedorList = new ArrayList<>();
-//        ControllerVendedor cv = new ControllerVendedor();
+//        List<Vendedor> vendedorList = new ArrayList<>();
+        ControllerVendedor cv = new ControllerVendedor(ReporteVendedorActivity.this);
 //        List<Vendedor> vendedorList = cv.getVendedoresCompleto();
-        vendedorList.add(new Vendedor(1, "Victor", "Calle 1", "Colonia 2", "477", "email", 1, 200));
+        List<Vendedor> vendedorList = cv.getVendedores();
 
         RecyclerView list_vendedores = findViewById(R.id.list_vendedores);
         list_vendedores.setHasFixedSize(true);
         list_vendedores.setLayoutManager(new LinearLayoutManager(ReporteVendedorActivity.this));
         ReporteVendedoresAdapter adapter = new ReporteVendedoresAdapter(vendedorList);
+        list_vendedores.setAdapter(adapter);
 
         String titulo = String.format(getString(R.string.txt_rep), "vendedores");
         ((TextView) findViewById(R.id.repVend_txtTitulo)).setText(titulo);

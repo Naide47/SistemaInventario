@@ -91,4 +91,16 @@ public class Persona implements Parcelable {
         dest.writeString(telefono);
         dest.writeString(email);
     }
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "noPersona=" + noPersona +
+                ", nombre='" + nombre + '\'' +
+                ", calle='" + calle + '\'' +
+                ", colonia='" + colonia + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

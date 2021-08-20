@@ -47,7 +47,7 @@
     <!--    Vendedores-->
     <string name="regs_vends_title">Vendedores</string>
     <string name="vends_clave">Clave del vendedor</string>
-    <string name="vends_comision">Comisión</string>
+    <string name="vends_comision">Comisión %</string>
     <!--    Clientes-->
     <string name="regs_cls_title">Clientes</string>
     <string name="cls_clave">Clave del cliente</string>

@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,18 +110,28 @@ public class ProveedorFragment extends Fragment implements ListAdapterProveedor.
 
         elementsP = new ArrayList<>();
 
-        // Recorremos la lista de externos
-        for(int i=0; i < externo.size(); i++) {
+//        // Recorremos la lista de externos
+//        for(int i=0; i < externo.size(); i++) {
+//
+//            // Comprobamos que el noPersona de externos sea igual al noPersona de personas
+//            if (externo.get(i).getNoPersona() == personas.get(i).getNoPersona()) {
+//                // Comprobamos que el tipo sea 2 osea que es un proveedor
+//                if (externo.get(i).getTipo() == 2) {
+//
+//                    elementsP.add(new ListElemetProveedor(externo.get(i).getNoExterno(), personas.get(i).getNoPersona(),"#775447", personas.get(i).getNombre(), externo.get(i).getCiudad(), String.valueOf(externo.get(i).getSaldo())));
+//                }
+//            }
+//
+//        }
 
-            // Comprobamos que el noPersona de externos sea igual al noPersona de personas
-            if (externo.get(i).getNoPersona() == personas.get(i).getNoPersona()) {
-                // Comprobamos que el tipo sea 2 osea que es un proveedor
-                if (externo.get(i).getTipo() == 2) {
-
-                    elementsP.add(new ListElemetProveedor(externo.get(i).getNoExterno(), personas.get(i).getNoPersona(),"#775447", personas.get(i).getNombre(), externo.get(i).getCiudad(), String.valueOf(externo.get(i).getSaldo())));
+        for (Persona persona : personas) {
+            for (Externo proveedor : externo) {
+                if (persona.getNoPersona() == proveedor.getNoPersona()) {
+                    if (proveedor.getTipo() == 2) {
+                        elementsP.add(new ListElemetProveedor(proveedor.getNoExterno(), persona.getNoPersona(), "#775447", persona.getNombre(), proveedor.getCiudad(), String.valueOf(proveedor.getSaldo())));
+                    }
                 }
             }
-
         }
 
         ListAdapterProveedor listAdapterProveedor = new ListAdapterProveedor(elementsP, vista.getContext(), this);

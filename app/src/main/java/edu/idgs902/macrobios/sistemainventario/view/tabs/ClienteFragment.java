@@ -69,22 +69,35 @@ public class ClienteFragment extends Fragment implements ListAdapter.OnClienteLi
         ControllerPersona controllerPersona = new ControllerPersona(vista.getContext(), vista.getContext());
         List<Persona> personas = controllerPersona.getPersonas();
 
+        Log.e("externos", externo.toString());
+        Log.e("personas", personas.toString());
 
         elements = new ArrayList<>();
 
-        // Recorremos la lista de externos
-        for (int i = 0; i < externo.size(); i++) {
-
-            // Comprobamos que el noPersona de externos sea igual al noPersona de personas
-            if (externo.get(i).getNoPersona() == personas.get(i).getNoPersona()) {
-                // Comprobamos que el tipo sea 1 osea que es un cliente
-                if (externo.get(i).getTipo() == 1) {
-
-                    elements.add(new LiatElement(externo.get(i).getNoExterno(), personas.get(i).getNoPersona(), "#775447", personas.get(i).getNombre(), externo.get(i).getCiudad(), String.valueOf(externo.get(i).getSaldo())));
+        for (Persona persona : personas) {
+            for (Externo externo1 : externo) {
+                if (persona.getNoPersona() == externo1.getNoPersona()) {
+                    if (externo1.getTipo() == 1) {
+                        elements.add(new LiatElement(externo1.getNoExterno(), persona.getNoPersona(), "#775447", persona.getNombre(), externo1.getCiudad(), String.valueOf(externo1.getSaldo())));
+                    }
                 }
             }
-
         }
+
+
+//        // Recorremos la lista de externos
+//        for (int i = 0; i < externo.size(); i++) {
+//
+//            // Comprobamos que el noPersona de externos sea igual al noPersona de personas
+//            if (externo.get(i).getNoPersona() == personas.get(i).getNoPersona()) {
+//                // Comprobamos que el tipo sea 1 osea que es un cliente
+//                if (externo.get(i).getTipo() == 1) {
+//                    elements.add(new LiatElement(externo.get(i).getNoExterno(), personas.get(i).getNoPersona(), "#775447", personas.get(i).getNombre(), externo.get(i).getCiudad(), String.valueOf(externo.get(i).getSaldo())));
+//                }
+//            }
+//
+//        }
+        Log.e("Clientes", elements.toString());
 
         ListAdapter listAdapter = new ListAdapter(elements, vista.getContext(), this);
         RecyclerView recyclerView = vista.findViewById(R.id.listRecycleView);

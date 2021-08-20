@@ -26,6 +26,7 @@ import edu.idgs902.macrobios.sistemainventario.view.tabs.vendedor.AgregarVendedo
 import edu.idgs902.macrobios.sistemainventario.view.tabs.vendedor.ListAdapterVendedor;
 import edu.idgs902.macrobios.sistemainventario.view.tabs.vendedor.ListElementVendedor;
 import edu.idgs902.macrobios.sistemainventario.view.tabs.vendedor.ModificarVendedor;
+import edu.idgs902.macrobios.sistemainventario.view.tabs.vendedor.ReporteVendedorActivity;
 
 //import edu.idgs902.macrobios.sistemainventario.view.tabs.vendedor.ReporteVendedorActivity;
 
@@ -44,7 +45,7 @@ public class VendedorFragment extends Fragment implements ListAdapterVendedor.On
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        vista =  inflater.inflate(R.layout.fragment_vendedor, container, false);
+        vista = inflater.inflate(R.layout.fragment_vendedor, container, false);
 
         init();
 
@@ -52,16 +53,16 @@ public class VendedorFragment extends Fragment implements ListAdapterVendedor.On
         vista.findViewById(R.id.btnAgregar).setOnClickListener(view -> {
             Intent intent = new Intent(vista.getContext(), AgregarVendedor.class);
             startActivity(intent);
+        });
 
-        //view.findViewById(R.id.btnPrueba).setOnClickListener(v -> {
-            //startActivity(new Intent(getActivity(), ReporteVendedorActivity.class));
-
+        vista.findViewById(R.id.btnReporte).setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), ReporteVendedorActivity.class));
         });
 
         return vista;
     }
 
-    private void init(){
+    private void init() {
         ControllerVendedor controllerVendedor = new ControllerVendedor(vista.getContext());
         List<Vendedor> vendedor = controllerVendedor.getVendedores();
 
@@ -70,8 +71,8 @@ public class VendedorFragment extends Fragment implements ListAdapterVendedor.On
 
         elementsV = new ArrayList<>();
 
-        for (int i = 0; i < vendedor.size(); i++){
-            if (vendedor.get(i).getNoPersona() == personas.get(i).getNoPersona()){
+        for (int i = 0; i < vendedor.size(); i++) {
+            if (vendedor.get(i).getNoPersona() == personas.get(i).getNoPersona()) {
                 elementsV.add(new ListElementVendedor(String.valueOf(vendedor.get(i).getComisiones()), vendedor.get(i).getNoVendedor(), personas.get(i).getNoPersona(), personas.get(i).getNombre()));
             }
         }

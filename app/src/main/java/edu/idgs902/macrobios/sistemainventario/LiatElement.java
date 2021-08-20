@@ -71,4 +71,16 @@ public class LiatElement {
     public void setNoPersona(int noPersona) {
         this.noPersona = noPersona;
     }
+
+    @Override
+    public String toString() {
+        return "LiatElement{" +
+                "color='" + color + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", ciudad='" + ciudad + '\'' +
+                ", saldo='" + saldo + '\'' +
+                ", noExterno=" + noExterno +
+                ", noPersona=" + noPersona +
+                '}';
+    }
 }

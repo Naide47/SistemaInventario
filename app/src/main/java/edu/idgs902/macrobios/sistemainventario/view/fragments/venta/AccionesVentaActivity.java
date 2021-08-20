@@ -25,6 +25,7 @@ import java.util.List;
 
 import edu.idgs902.macrobios.sistemainventario.R;
 import edu.idgs902.macrobios.sistemainventario.controller.ControllerExternos;
+import edu.idgs902.macrobios.sistemainventario.controller.ControllerVendedor;
 import edu.idgs902.macrobios.sistemainventario.controller.ControllerVenta;
 import edu.idgs902.macrobios.sistemainventario.controller.adapters.DetalleVentaAdapter;
 import edu.idgs902.macrobios.sistemainventario.model.DetalleVenta;
@@ -164,19 +165,19 @@ public class AccionesVentaActivity extends AppCompatActivity implements DetalleV
         });
         actVent_btnVendBuscar.setOnClickListener(v -> {
             if (!TextUtils.isEmpty(actVent_edtVendClave.getText())) {
-//                    Vendedor aux = controllerVendedor.getVendedor(Integer.parseInt(agVent_edtVendClave.getText().toString()));
-//                int noVendedor = Integer.parseInt(actVent_edtVendClave.getText().toString());
-//                if (noVendedor == vendedor.getNoVendedor()) {
-//                    mostrarToast("Mismo vendedor");
-//                    return;
-//                }
-//                    Vendedor aux = controllerVendedor.getVendedor(noVendedor);
-//                if (aux != null) {
-//                    vendedor = aux;
-//                    actVent_edtVendNombre.setText(vendedor.getNombre());
-//                } else {
-//                    mostrarToast("Vendedor no encontrado");
-//                }
+                int noVendedor = Integer.parseInt(actVent_edtVendClave.getText().toString());
+                if (noVendedor == vendedor.getNoVendedor()) {
+                    mostrarToast("Mismo vendedor");
+                    return;
+                }
+                ControllerVendedor cv = new ControllerVendedor(AccionesVentaActivity.this);
+                Vendedor aux = cv.getVendedor(noVendedor);
+                if (aux != null) {
+                    vendedor = aux;
+                    actVent_edtVendNombre.setText(vendedor.getNombre());
+                } else {
+                    mostrarToast("Vendedor no encontrado");
+                }
             } else {
                 mostrarToast("Por favor ingrese el número del vendedor");
             }

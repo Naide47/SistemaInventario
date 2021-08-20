@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Contraseña"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:importantForAutofill="no" />
 
         <Button

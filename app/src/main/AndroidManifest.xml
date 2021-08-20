@@ -10,10 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SistemaInventario">
 
-        <activity android:name=".view.tabs.vendedor.ReporteVendedorActivity"></activity>
-        <activity android:name=".view.tabs.producto.ReporteProductosActivity"></activity>
-        <activity android:name=".view.tabs.externos.ReporteExternosActivity" />
-        <activity android:name=".view.fragments.venta.AccionesVentaActivity" />
+        <activity
+            android:name=".view.tabs.vendedor.ReporteVendedorActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.tabs.producto.ReporteProductosActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.tabs.externos.ReporteExternosActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.fragments.venta.AccionesVentaActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".view.fragments.compra.AccionesCompraActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -50,11 +66,20 @@
             android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustPan" />
 
-        <activity android:name=".view.tabs.producto.AccionesProductoActivity" />
-        <activity android:name=".view.tabs.producto.AgregarProductoActivity" />
+        <!--        <activity android:name=".view.tabs.producto.AccionesProductoActivity" />-->
+        <!--        <activity android:name=".view.tabs.producto.AgregarProductoActivity" />-->
         <activity
             android:name=".view.tabs.vendedor.AgregarVendedor"
-            android:exported="true" />
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.tabs.vendedor.ModificarVendedor"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name=".view.tabs.producto.AccionesProductoActivity"

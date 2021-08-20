@@ -27,6 +27,7 @@ import java.util.List;
 import edu.idgs902.macrobios.sistemainventario.R;
 import edu.idgs902.macrobios.sistemainventario.controller.ControllerExternos;
 import edu.idgs902.macrobios.sistemainventario.controller.ControllerProducto;
+import edu.idgs902.macrobios.sistemainventario.controller.ControllerVendedor;
 import edu.idgs902.macrobios.sistemainventario.controller.ControllerVenta;
 import edu.idgs902.macrobios.sistemainventario.controller.adapters.DetalleVentaAdapter;
 import edu.idgs902.macrobios.sistemainventario.model.DetalleVenta;
@@ -118,9 +119,11 @@ public class AgregarVentaActivity extends AppCompatActivity implements DetalleVe
         });
         agVenta_btnVendBuscar.setOnClickListener(v -> {
             if (!TextUtils.isEmpty(agVent_edtVendClave.getText())) {
-//                    Vendedor aux = controllerVendedor.getVendedor(Integer.parseInt(agVent_edtVendClave.getText().toString()));
-                Vendedor aux = new Vendedor(1, "Antonio", "Calle Vendedor",
-                        "Colonia Vendedor", "4779512423", "antonio@email.com", 1, 0);
+
+                ControllerVendedor cv = new ControllerVendedor(AgregarVentaActivity.this);
+                Vendedor aux = cv.getVendedor(Integer.parseInt(agVent_edtVendClave.getText().toString()));
+//                Vendedor aux = new Vendedor(1, "Antonio", "Calle Vendedor",
+//                        "Colonia Vendedor", "4779512423", "antonio@email.com", 1, 0);
                 if (aux != null) {
                     vendedor = aux;
                     agVenta_edtVendNombre.setText(vendedor.getNombre());
