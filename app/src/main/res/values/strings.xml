@@ -43,6 +43,7 @@
     <string name="txt_ciudad">Ciudad</string>
     <string name="txt_rfc">RFC</string>
     <string name="txt_saldo">Saldo</string>
+    <string name="txt_comisiones">Comision</string>
     <!--    Vendedores-->
     <string name="regs_vends_title">Vendedores</string>
     <string name="vends_clave">Clave del vendedor</string>
