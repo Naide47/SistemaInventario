@@ -112,7 +112,7 @@ public class ControllerHistoricoProducto extends DataBase {
         boolean resultado = true;
         try {
             HistoricoProducto historicoProducto = getHistoricoIndividual(noCompra, noProducto);
-            Log.e("updateHistorico", "historicoProducto != null " + (historicoProducto != null));
+
             if (historicoProducto != null) {
                 conn = new DataBase(context);
                 sqlite = conn.getWritableDatabase();
@@ -124,18 +124,19 @@ public class ControllerHistoricoProducto extends DataBase {
                 resultado = sqlite.update(T_HISTORICOPRODUCTO, values,
                         K_HISTORICOPRODUCTO_NOHISTORICO + "=?", new String[]{String.valueOf(historicoProducto.getNoHistorico())}) == 1;
 
-                Log.e("updateHistorico", "resultado " + (resultado));
-
                 sqlite.close();
 
                 if (resultado) {
                     ControllerProducto cp = new ControllerProducto(context);
                     cp.actualizarPromedio(noProducto, getHistoricosPorProducto(noProducto));
                     if (historicoProducto.getNoHistorico() == noHistUltimo) {
-                        Log.e("updateHistorico", "historicoProducto.getNoHistorico() == noHistUltimo" + (historicoProducto.getNoHistorico() == noHistUltimo));
-                        int nuevaCantidad = -(cp.getProducto(historicoProducto.getNoProducto()).getExistencia() - historicoProducto.getCantidad()  - cantidad);
+                        int nuevaCantidad = cantidad - historicoProducto.getCantidad();
                         cp.actualizarDatos(noProducto, costo, nuevaCantidad);
+                    } else {
+                        int nuevaCantidad = -(cantidad - historicoProducto.getCantidad());
+                        cp.restarVenta(noProducto, nuevaCantidad);
                     }
+
                 }
             }
         } catch (Exception ex) {
@@ -143,22 +144,4 @@ public class ControllerHistoricoProducto extends DataBase {
         }
         return resultado;
     }
-
-//    public boolean deleteHistoricos(int noCompra, int noProducto, SQLiteDatabase sqlite) throws Exception {
-//        int result = 0;
-//
-//        HistoricoProducto historicoProducto = getHistoricoIndividual(noCompra, noProducto);
-//        ControllerProducto cp = new ControllerProducto(context);
-//        int cantidad = -historicoProducto.getCantidad();
-//        double costo = -historicoProducto.getCosto();
-//        cp.actualizarDatos(noProducto, costo, cantidad);
-//
-//        result = sqlite.delete(T_HISTORICOPRODUCTO,
-//                K_HISTORICOPRODUCTO_NOHISTORICO + "=?",
-//                new String[]{String.valueOf(historicoProducto.getNoHistorico())});
-//
-//        cp.actualizarPromedio(noProducto, getHistoricosPorProducto(noProducto));
-//
-//        return result != 0;
-//    }
 }

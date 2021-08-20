@@ -53,7 +53,7 @@ public class DetalleCompraAdapter extends RecyclerView.Adapter<DetalleCompraAdap
                 if (valor.equals("")) {
                     valor = "0";
                 }
-                detallesCompra.get(position).setCantidad_producto(Integer.parseInt(valor));
+                detalleCompra.setCantidad_producto(Integer.parseInt(valor));
                 holder.actualizarImporte(detalleCompra);
                 accionesLista.calcularTotal(position, valor, 1);
             }
@@ -75,7 +75,7 @@ public class DetalleCompraAdapter extends RecyclerView.Adapter<DetalleCompraAdap
                 if (valor.equals("")) {
                     valor = "0";
                 }
-                detallesCompra.get(position).setPrecio_compra(Double.parseDouble(valor));
+                detalleCompra.setPrecio_compra(Double.parseDouble(valor));
                 holder.actualizarImporte(detalleCompra);
                 accionesLista.calcularTotal(position, valor, 2);
             }

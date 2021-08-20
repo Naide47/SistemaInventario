@@ -26,6 +26,7 @@ import edu.idgs902.macrobios.sistemainventario.model.Externo;
 import edu.idgs902.macrobios.sistemainventario.model.Persona;
 import edu.idgs902.macrobios.sistemainventario.view.AgregarCliente;
 import edu.idgs902.macrobios.sistemainventario.view.ModificarCliente;
+import edu.idgs902.macrobios.sistemainventario.view.tabs.externos.ReporteExternosActivity;
 
 
 public class ClienteFragment extends Fragment implements ListAdapter.OnClienteListener {
@@ -51,6 +52,12 @@ public class ClienteFragment extends Fragment implements ListAdapter.OnClienteLi
             startActivity(intent);
         });
 
+        vista.findViewById(R.id.btnReporte).setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), ReporteExternosActivity.class);
+            intent.putExtra("tipo", 1);
+            startActivity(intent);
+        });
+
         return vista;
     }
 
@@ -66,16 +73,16 @@ public class ClienteFragment extends Fragment implements ListAdapter.OnClienteLi
         elements = new ArrayList<>();
 
         // Recorremos la lista de externos
-        for(int i=0; i < externo.size(); i++) {
+        for (int i = 0; i < externo.size(); i++) {
 
-                // Comprobamos que el noPersona de externos sea igual al noPersona de personas
-                if (externo.get(i).getNoPersona() == personas.get(i).getNoPersona()) {
-                    // Comprobamos que el tipo sea 1 osea que es un cliente
-                    if (externo.get(i).getTipo() == 1) {
-                        
-                        elements.add(new LiatElement(externo.get(i).getNoExterno(), personas.get(i).getNoPersona(), "#775447", personas.get(i).getNombre(), externo.get(i).getCiudad(), String.valueOf(externo.get(i).getSaldo())));
-                    }
+            // Comprobamos que el noPersona de externos sea igual al noPersona de personas
+            if (externo.get(i).getNoPersona() == personas.get(i).getNoPersona()) {
+                // Comprobamos que el tipo sea 1 osea que es un cliente
+                if (externo.get(i).getTipo() == 1) {
+
+                    elements.add(new LiatElement(externo.get(i).getNoExterno(), personas.get(i).getNoPersona(), "#775447", personas.get(i).getNombre(), externo.get(i).getCiudad(), String.valueOf(externo.get(i).getSaldo())));
                 }
+            }
 
         }
 

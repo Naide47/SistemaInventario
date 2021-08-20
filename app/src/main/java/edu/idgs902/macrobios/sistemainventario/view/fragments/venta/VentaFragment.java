@@ -89,6 +89,8 @@ public class VentaFragment extends Fragment  implements VentaAdapter.OnItemListe
 
     @Override
     public void onItemClick(int position) {
-
+        Intent intent = new Intent(getActivity(), AccionesVentaActivity.class);
+        intent.putExtra("venta",ventas.get(position));
+        startActivity(intent);
     }
 }

@@ -3,6 +3,7 @@ package edu.idgs902.macrobios.sistemainventario.controller.adapters;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,12 @@ public class DetalleVentaAdapter extends RecyclerView.Adapter<DetalleVentaAdapte
                 if (valor.equals("")) {
                     valor = "0";
                 }
-                detallesVenta.get(position).setCantidad_producto(Integer.parseInt(valor));
+                detalleVentaAux.setCantidad_producto(Integer.parseInt(valor));
+                if(detalleVentaAux.getCantidad_producto() < 30){
+                    holder.list_pventa.setText(String.valueOf(detalleVentaAux.getProducto().getP_venta_menor()));
+                } else {
+                    holder.list_pventa.setText(String.valueOf(detalleVentaAux.getProducto().getP_venta_mayor()));
+                }
                 holder.actualizarImporte(detalleVentaAux);
                 accionesLista.calcularTotal(position, valor, 1);
             }
@@ -65,6 +71,8 @@ public class DetalleVentaAdapter extends RecyclerView.Adapter<DetalleVentaAdapte
             }
         });
         holder.list_quitar.setOnClickListener(v -> accionesLista.eliminarElemento(position));
+        holder.list_cantidad.setEnabled(detalleVentaAux.isEstado());
+        holder.list_quitar.setEnabled(detalleVentaAux.isEstado());
     }
 
     @Override

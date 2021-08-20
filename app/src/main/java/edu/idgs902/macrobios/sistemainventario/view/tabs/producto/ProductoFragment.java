@@ -1,6 +1,5 @@
 package edu.idgs902.macrobios.sistemainventario.view.tabs.producto;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,8 +48,12 @@ public class ProductoFragment extends Fragment implements ProductoAdapter.OnItem
         adapter = new ProductoAdapter(productos, ProductoFragment.this);
         prodLista.setAdapter(adapter);
 
-        view.findViewById(R.id.prod_fab).setOnClickListener(v -> {
+        view.findViewById(R.id.prod_fab_ag).setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), AgregarProductoActivity.class));
+        });
+
+        view.findViewById(R.id.prod_fab_rep).setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), ReporteProductosActivity.class));
         });
 
         ((EditText) view.findViewById(R.id.prod_buscador)).addTextChangedListener(new TextWatcher() {

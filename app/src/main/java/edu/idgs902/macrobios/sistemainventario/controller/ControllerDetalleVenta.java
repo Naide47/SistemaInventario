@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -62,14 +63,14 @@ public class ControllerDetalleVenta extends DataBase {
         List<DetalleVenta> detalleVentas = new ArrayList<>();
         try {
             conn = new DataBase(context);
-            sqlite = conn.getWritableDatabase();
+            sqlite = conn.getReadableDatabase();
             if (sqlite != null) {
                 Cursor cursor = sqlite.rawQuery("SELECT * FROM " + T_DETALLEVENTA + " WHERE "
                         + K_VENTA_NOVENTA + "=?", new String[]{String.valueOf(noVenta)});
                 if (cursor.moveToFirst()) {
                     ControllerProducto cp = new ControllerProducto(context);
                     while (!cursor.isAfterLast()) {
-                        Producto productoAux = cp.getProducto(noVenta);
+                        Producto productoAux = cp.getProducto(cursor.getInt(cursor.getColumnIndex(K_PRODUCTO_NOPRODUCTO)));
                         DetalleVenta detalleVentaAux = new DetalleVenta(cursor.getInt(cursor.getColumnIndex(K_DETALLEVENTA_NODETALLEVENTA)),
                                 productoAux,
                                 cursor.getInt(cursor.getColumnIndex(K_DETALLEVENTA_CANTIDAD)),
@@ -86,5 +87,112 @@ public class ControllerDetalleVenta extends DataBase {
 
         }
         return detalleVentas;
+    }
+
+    public DetalleVenta getDetalleIndividual(int noDetalle) {
+        DetalleVenta detalleVenta = null;
+        try {
+            conn = new DataBase(context);
+            sqlite = conn.getReadableDatabase();
+            Cursor cursor = sqlite.rawQuery("SELECT * FROM " + T_DETALLEVENTA +
+                    " WHERE " + K_DETALLEVENTA_NODETALLEVENTA + "=?", new String[]{String.valueOf(noDetalle)});
+            if (cursor.moveToFirst()) {
+                ControllerProducto cp = new ControllerProducto(context);
+                Producto productoAux = cp.getProducto(cursor.getInt(cursor.getColumnIndex(K_PRODUCTO_NOPRODUCTO)));
+                detalleVenta = new DetalleVenta(cursor.getInt(cursor.getColumnIndex(K_DETALLEVENTA_NODETALLEVENTA)),
+                        productoAux,
+                        cursor.getInt(cursor.getColumnIndex(K_DETALLEVENTA_CANTIDAD)),
+                        cursor.getDouble(cursor.getColumnIndex(K_DETALLEVENTA_PRECIOVENTA)));
+            }
+            cursor.close();
+            sqlite.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return detalleVenta;
+    }
+
+    public boolean updateDetallesVenta(List<DetalleVenta> detallesVenta) {
+        boolean result = true;
+        try {
+            if (detallesVenta.size() != 0) {
+                DataBase conn = new DataBase(context);
+                SQLiteDatabase sqlite = conn.getWritableDatabase();
+
+                ControllerProducto cp = new ControllerProducto(context);
+
+                for (DetalleVenta detalleVenta : detallesVenta) {
+                    DetalleVenta detalleVentaAnterior = getDetalleIndividual(detalleVenta.getNoDetalleVenta());
+
+                    values = new ContentValues();
+
+                    values.put(K_DETALLEVENTA_CANTIDAD, detalleVenta.getCantidad_producto());
+                    values.put(K_DETALLEVENTA_PRECIOVENTA, detalleVenta.getPrecio_venta());
+
+                    result = (sqlite.update(T_DETALLEVENTA, values, K_DETALLEVENTA_NODETALLEVENTA + "=?",
+                            new String[]{String.valueOf(detalleVenta.getNoDetalleVenta())}) == 1);
+
+                    if (result) {
+                        DetalleVenta anterior = getDetalleIndividual(detalleVenta.getNoDetalleVenta());
+                        cp.restarVenta(anterior.getProducto().getNoProducto(), -anterior.getCantidad_producto());
+                        cp.restarVenta(anterior.getProducto().getNoProducto(), detalleVenta.getCantidad_producto());
+                    } else {
+                        break;
+                    }
+
+                    int nuevaCantidad = -(detalleVentaAnterior.getCantidad_producto() - detalleVenta.getCantidad_producto());
+                    cp.restarVenta(detalleVenta.getProducto().getNoProducto(), nuevaCantidad);
+                }
+
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        Log.e("updateDet","" + result);
+        return result;
+    }
+
+    //    public boolean deleteDetallesVenta(int noVenta) {
+//        int result = 0;
+//        try {
+//            List<DetalleVenta> detallesVenta = getDetallesVenta(noVenta);
+//            if (detallesVenta.size() != 0) {
+//                conn = new DataBase(context);
+//                sqlite = conn.getWritableDatabase();
+//
+//                ControllerProducto cp = new ControllerProducto(context);
+//                for (DetalleVenta detalleVenta : detallesVenta) {
+//                    result = sqlite.delete(T_DETALLEVENTA,
+//                            K_DETALLEVENTA_NODETALLEVENTA + "=?",
+//                            new String[]{String.valueOf(detalleVenta.getNoDetalleVenta())});
+//
+//                    if (result != 0) {
+//                        cp.restarVenta(detalleVenta.getProducto().getNoProducto(), -(detalleVenta.getCantidad_producto()));
+//                    } else {
+//                        break;
+//                    }
+//                }
+//            }
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//        return result != 0;
+//    }
+    public boolean deleteDetallesVenta(int noVenta) {
+        int result = 0;
+        try {
+            if (getDetallesVenta(noVenta) != null) {
+                conn = new DataBase(context);
+                sqlite = conn.getWritableDatabase();
+
+                result = sqlite.delete(T_DETALLEVENTA,
+                        K_VENTA_NOVENTA + "=?",
+                        new String[]{String.valueOf(noVenta)});
+            }
+        } catch (
+                Exception ex) {
+            ex.printStackTrace();
+        }
+        return result != 0;
     }
 }

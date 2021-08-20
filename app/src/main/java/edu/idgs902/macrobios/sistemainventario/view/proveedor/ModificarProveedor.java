@@ -48,8 +48,7 @@ public class ModificarProveedor extends AppCompatActivity {
         init(nopersona, noexterno);
 
         findViewById(R.id.btnAtras).setOnClickListener(view -> {
-            Intent intent1 = new Intent(this, HomeActivity.class);
-            startActivity(intent1);
+            onBackPressed();
         });
 
         findViewById(R.id.btnActivar).setOnClickListener(view ->{

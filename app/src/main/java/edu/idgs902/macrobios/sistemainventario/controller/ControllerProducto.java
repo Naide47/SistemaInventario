@@ -216,8 +216,8 @@ public class ControllerProducto extends DataBase {
         try {
             Producto producto = getProducto(noProducto);
             int nuevaCantidad = producto.getExistencia() + cantidad;
-            double pMayor = costo * 1.4;
-            double pMenor = costo * 1.28;
+            double pMenor = costo * 1.4;
+            double pMayor = costo * 1.28;
 
             conn = new DataBase(context);
             sqlite = conn.getWritableDatabase();
@@ -225,8 +225,8 @@ public class ControllerProducto extends DataBase {
             values = new ContentValues();
             values.put(K_PRODUCTO_P_COSTO, costo);
             values.put(K_PRODUCTO_EXISTENCIA, nuevaCantidad);
-            values.put(K_PRODUCTO_P_VENTA_MAYOR, pMayor);
             values.put(K_PRODUCTO_P_VENTA_MENOR, pMenor);
+            values.put(K_PRODUCTO_P_VENTA_MAYOR, pMayor);
 
             sqlite.update(T_PRODUCTO, values, K_PRODUCTO_NOPRODUCTO + "=?", new String[]{String.valueOf(noProducto)});
             sqlite.close();

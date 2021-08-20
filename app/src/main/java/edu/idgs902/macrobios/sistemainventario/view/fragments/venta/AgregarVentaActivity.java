@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -146,6 +147,7 @@ public class AgregarVentaActivity extends AppCompatActivity implements DetalleVe
                     detallesVenta = adapter.getLista();
                     detallesVenta.add(detalleVenta);
                     adapter.actualizarList(detallesVenta);
+                    agVent_edtProdClave.getText().clear();
                 } else {
                     mostrarToast("Producto no encontrado");
                 }
