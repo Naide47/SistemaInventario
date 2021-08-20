@@ -120,4 +120,16 @@ public class Externo extends Persona{
         dest.writeString(ciudad);
         dest.writeDouble(saldo);
     }
+
+    @Override
+    public String toString() {
+        return "Externo{" +
+                "noExterno=" + noExterno +
+                ", tipo=" + tipo +
+                ", rfc='" + rfc + '\'' +
+                ", ciudad='" + ciudad + '\'' +
+                ", saldo=" + saldo +
+                ", noPersona=" + noPersona +
+                '}';
+    }
 }

@@ -9,15 +9,17 @@
     <string name="btn_aceptar">Aceptar</string>
     <string name="btn_cancelar">Cancelar</string>
     <string name="btn_volver">Volver</string>
+    <string name="btn_agregar">Agregar</string>
     <string name="btn_modificar">Modificar</string>
     <string name="btn_eliminar">Eliminar</string>
     <string name="txt_detalles">Detalles</string>
+    <string name="txt_buscar">Buscar</string>
 
     <!--    Alertas-->
     <string name="txt_agregado_titulo">Agregado</string>
     <string name="txt_agredado_cuerpo">%1$s %2$s fue agregado con exito</string>
     <string name="txt_actualizado_titulo">Actualizado</string>
-    <string name="txt_actualizado_cuerpo">%1$s %2$s fue actualizado con exito</string>
+    <string name="txt_actualizado_cuerpo">%1$s %2$s fue actualizad%3$s con exito</string>
     <!--    <string name="txt_acciones_titlo">Acciones</string>-->
     <!--    <string-array name="txt_acciones_opciones">-->
     <!--        <item>Ver o editar</item>-->
@@ -27,6 +29,7 @@
     <string name="txt_eliminar_titulo">Eliminar</string>
     <string name="txt_eliminar_cuerpo">¿Estas seguro de eliminar est%1$s %2$s?</string>
     <string name="txt_eliminar_exito">%1$s %2$s fue eliminad%3$s con exito.</string>
+    <string name="txt_rep">Reporte de %1$s</string>
 
     <!--    Registros (Vendedores, Clientes, Proveedores y Productos)-->
     <string name="regs_title">Registros</string>
@@ -43,12 +46,17 @@
     <string name="txt_comisiones">Comision</string>
     <!--    Vendedores-->
     <string name="regs_vends_title">Vendedores</string>
+    <string name="vends_clave">Clave del vendedor</string>
+    <string name="vends_comision">Comisión</string>
     <!--    Clientes-->
     <string name="regs_cls_title">Clientes</string>
+    <string name="cls_clave">Clave del cliente</string>
     <!--    Proveedores-->
     <string name="regs_prov_title">Proveedores</string>
+    <string name="prov_clave">Clave del proveedor</string>
     <!--    Productos-->
     <string name="regs_prod_title">Productos</string>
+    <string name="prod">Producto</string>
     <string name="prod_txt_linea">Linea</string>
     <string name="prod_txt_existencia">Existencia</string>
     <string name="prod_txt_pcosto">Precio costo</string>
@@ -85,18 +93,41 @@
         <item>BEBE 10 – 12</item>
     </string-array>
 
+    <!--    Compras y ventas-->
+    <string name="cv_f_r">Factura o Recibo</string>
+    <string name="cv_factura">Factura</string>
+    <string name="cv_txt_fecha">Fecha</string>
+    <string name="cv_txt_clave">Clave</string>
+    <string name="cv_txt_desc">Descripcion</string>
+    <string name="cv_txt_unidad">Unidad</string>
+    <string name="cv_txt_linea">Linea</string>
+    <string name="cv_txt_cantidad">Cantidad</string>
+    <string name="cv_txt_importe">Importe</string>
+    <string name="cv_txt_suma">Suma</string>
+    <string name="cv_txt_iva">I.V.A.</string>
+    <string name="cv_txt_total">Total</string>
+    <string name="cv_txt_totalPares">Total pares</string>
+    <string-array name="cv_f_r_opciones">
+        <item>@string/cv_factura</item>
+        <item>Recibo</item>
+    </string-array>
+
     <!--    Compras-->
     <string name="comp_title">Compras</string>
+    <string name="comp_pcompra">Precio compra</string>
+    <string name="comp_txt_agregar">Agregar Compra</string>
 
     <!--    Ventas-->
     <string name="vent_title">Ventas</string>
+    <string name="vent_pventa">Precio venta</string>
+    <string name="vent_txt_agregar">Agregar Venta</string>
 
     <!--    Ignorar-->
     <string name="drawer_open">Abrir drawer</string>
     <string name="drawer_close">Cerrar drawer</string>
-
     <string name="hello_blank_fragment">Fragmento por defecto</string>
     <string name="seleccionar">SELECCIONAR</string>
+    <string name="btn_listar">Listar</string>
 
 
 </resources>

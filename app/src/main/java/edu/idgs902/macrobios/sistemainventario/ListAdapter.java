@@ -27,11 +27,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     @Override
-    public int getItemCount() { return mData.size(); }
+    public int getItemCount() {
+        return mData.size();
+    }
 
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.list_element, null);
+        View view = mInflater.inflate(R.layout.list_element, parent, false);
         return new ListAdapter.ViewHolder(view, mOnClienteListener);
     }
 
@@ -40,38 +42,58 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         holder.bindData(mData.get(position));
     }
 
-    public void setItems(List<LiatElement> items) { mData=items; }
+    public void setItems(List<LiatElement> items) {
+        mData = items;
+        notifyDataSetChanged();
+    }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        ImageView iconImage;
-        TextView nombre, ciudad, saldo;
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        //        ImageView iconImage;
+//        TextView nombre, ciudad, saldo;
+        ImageView list_icono;
+        TextView list_nombre; //Para el nombre;
+        TextView list_ciudad, list_saldo;
+
         OnClienteListener onClienteListener;
 
         ViewHolder(View itemView, OnClienteListener onClienteListener) {
             super(itemView);
-            iconImage = itemView.findViewById(R.id.iconImageViewP);
-            nombre = itemView.findViewById(R.id.nombreViewP);
-            ciudad = itemView.findViewById(R.id.ciudadViewP);
-            saldo = itemView.findViewById(R.id.saldotViewP);
+
+            //iconImage = itemView.findViewById(R.id.iconImageViewP);
+            //nombre = itemView.findViewById(R.id.nombreViewP);
+            //ciudad = itemView.findViewById(R.id.ciudadViewP);
+            //saldo = itemView.findViewById(R.id.saldotViewP);
+
+            list_icono = itemView.findViewById(R.id.list_icono);
+            list_nombre = itemView.findViewById(R.id.list_titulo1);
+            list_ciudad = itemView.findViewById(R.id.list_subtitulo);
+            list_saldo = itemView.findViewById(R.id.list_adicional);
+
             this.onClienteListener = onClienteListener;
 
             itemView.setOnClickListener(this);
         }
 
         void bindData(final LiatElement item) {
-            iconImage.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
-            nombre.setText(item.getNombre());
-            ciudad.setText(item.getCiudad());
-            saldo.setText(item.getSaldo());
+//            iconImage.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
+//            nombre.setText(item.getNombre());
+//            ciudad.setText(item.getCiudad());
+//            saldo.setText(item.getSaldo());
+            list_icono.setImageResource(R.drawable.ic_cliente);
+            list_icono.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
+            list_nombre.setText(item.getNombre());
+            list_ciudad.setText(item.getCiudad());
+            list_saldo.setText(item.getSaldo());
         }
 
         @Override
         public void onClick(View v) {
-            onClienteListener.onClienteClick(getAdapterPosition());
+//            onClienteListener.onClienteClick(getAdapterPosition());
+            onClienteListener.onClienteClick(getBindingAdapterPosition());
         }
     }
 
-    public interface OnClienteListener{
+    public interface OnClienteListener {
         void onClienteClick(int position);
     }
 

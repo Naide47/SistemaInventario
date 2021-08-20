@@ -16,6 +16,7 @@ import java.util.List;
 
 import edu.idgs902.macrobios.sistemainventario.LiatElement;
 import edu.idgs902.macrobios.sistemainventario.R;
+
 import edu.idgs902.macrobios.sistemainventario.controller.ControllerPersona;
 import edu.idgs902.macrobios.sistemainventario.controller.ControllerVendedor;
 import edu.idgs902.macrobios.sistemainventario.model.Externo;
@@ -25,6 +26,9 @@ import edu.idgs902.macrobios.sistemainventario.view.tabs.vendedor.AgregarVendedo
 import edu.idgs902.macrobios.sistemainventario.view.tabs.vendedor.ListAdapterVendedor;
 import edu.idgs902.macrobios.sistemainventario.view.tabs.vendedor.ListElementVendedor;
 import edu.idgs902.macrobios.sistemainventario.view.tabs.vendedor.ModificarVendedor;
+
+//import edu.idgs902.macrobios.sistemainventario.view.tabs.vendedor.ReporteVendedorActivity;
+
 
 public class VendedorFragment extends Fragment implements ListAdapterVendedor.OnVendedorListener {
 
@@ -44,9 +48,14 @@ public class VendedorFragment extends Fragment implements ListAdapterVendedor.On
 
         init();
 
+
         vista.findViewById(R.id.btnAgregar).setOnClickListener(view -> {
             Intent intent = new Intent(vista.getContext(), AgregarVendedor.class);
             startActivity(intent);
+
+        //view.findViewById(R.id.btnPrueba).setOnClickListener(v -> {
+            //startActivity(new Intent(getActivity(), ReporteVendedorActivity.class));
+
         });
 
         return vista;

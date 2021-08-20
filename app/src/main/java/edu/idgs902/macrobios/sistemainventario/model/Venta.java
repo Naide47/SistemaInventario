@@ -20,7 +20,7 @@ public class Venta implements Parcelable {
     private double total_venta;
     private List<DetalleVenta> detallesVenta;
 
-    public Venta(int noVenta, Externo externo_cliente, Vendedor vendedor, String fecha, int comision, String f_r, int f_r_no, int total_pares, double suma, double iva, double total_venta) {
+    public Venta(int noVenta, Externo externo_cliente, Vendedor vendedor, String fecha, int comision, String f_r, int f_r_no, int total_pares, double suma, double iva, double total_venta, List<DetalleVenta> detallesVenta) {
         this.noVenta = noVenta;
         this.externo_cliente = externo_cliente;
         this.vendedor = vendedor;
@@ -32,9 +32,10 @@ public class Venta implements Parcelable {
         this.suma = suma;
         this.iva = iva;
         this.total_venta = total_venta;
+        this.detallesVenta = detallesVenta;
     }
 
-    public Venta(Externo externo_cliente, Vendedor vendedor, String fecha, int comision, String f_r, int f_r_no, int total_pares, double suma, double iva, double total_venta) {
+    public Venta(Externo externo_cliente, Vendedor vendedor, String fecha, int comision, String f_r, int f_r_no, int total_pares, double suma, double iva, double total_venta, List<DetalleVenta> detallesVenta) {
         this.externo_cliente = externo_cliente;
         this.vendedor = vendedor;
         this.fecha = fecha;
@@ -45,6 +46,7 @@ public class Venta implements Parcelable {
         this.suma = suma;
         this.iva = iva;
         this.total_venta = total_venta;
+        this.detallesVenta = detallesVenta;
     }
 
     protected Venta(Parcel in) {
@@ -78,44 +80,96 @@ public class Venta implements Parcelable {
         return noVenta;
     }
 
+    public void setNoVenta(int noVenta) {
+        this.noVenta = noVenta;
+    }
+
     public Externo getExterno_cliente() {
         return externo_cliente;
+    }
+
+    public void setExterno_cliente(Externo externo_cliente) {
+        this.externo_cliente = externo_cliente;
     }
 
     public Vendedor getVendedor() {
         return vendedor;
     }
 
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
+
     public String getFecha() {
         return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
     public int getComision() {
         return comision;
     }
 
+    public void setComision(int comision) {
+        this.comision = comision;
+    }
+
     public String getF_r() {
         return f_r;
+    }
+
+    public void setF_r(String f_r) {
+        this.f_r = f_r;
     }
 
     public int getF_r_no() {
         return f_r_no;
     }
 
+    public void setF_r_no(int f_r_no) {
+        this.f_r_no = f_r_no;
+    }
+
     public int getTotal_pares() {
         return total_pares;
+    }
+
+    public void setTotal_pares(int total_pares) {
+        this.total_pares = total_pares;
     }
 
     public double getSuma() {
         return suma;
     }
 
+    public void setSuma(double suma) {
+        this.suma = suma;
+    }
+
     public double getIva() {
         return iva;
     }
 
+    public void setIva(double iva) {
+        this.iva = iva;
+    }
+
     public double getTotal_venta() {
         return total_venta;
+    }
+
+    public void setTotal_venta(double total_venta) {
+        this.total_venta = total_venta;
+    }
+
+    public List<DetalleVenta> getDetallesVenta() {
+        return detallesVenta;
+    }
+
+    public void setDetallesVenta(List<DetalleVenta> detallesVenta) {
+        this.detallesVenta = detallesVenta;
     }
 
     @Override

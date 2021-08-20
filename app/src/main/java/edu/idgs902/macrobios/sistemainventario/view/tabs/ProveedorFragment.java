@@ -25,6 +25,7 @@ import edu.idgs902.macrobios.sistemainventario.view.proveedor.AgregarProveedor;
 import edu.idgs902.macrobios.sistemainventario.view.proveedor.ListAdapterProveedor;
 import edu.idgs902.macrobios.sistemainventario.view.proveedor.ListElemetProveedor;
 import edu.idgs902.macrobios.sistemainventario.view.proveedor.ModificarProveedor;
+import edu.idgs902.macrobios.sistemainventario.view.tabs.externos.ReporteExternosActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -90,6 +91,12 @@ public class ProveedorFragment extends Fragment implements ListAdapterProveedor.
             startActivity(intent);
         });
 
+        vista.findViewById(R.id.btnReporte).setOnClickListener(v ->{
+            Intent intent = new Intent(getActivity(), ReporteExternosActivity.class);
+            intent.putExtra("tipo", 2);
+            startActivity(intent);
+        });
+
         return vista;
     }
 
@@ -119,7 +126,7 @@ public class ProveedorFragment extends Fragment implements ListAdapterProveedor.
         }
 
         ListAdapterProveedor listAdapterProveedor = new ListAdapterProveedor(elementsP, vista.getContext(), this);
-        RecyclerView recyclerView = vista.findViewById(R.id.listRecycleViewP);
+        RecyclerView recyclerView = vista.findViewById(R.id.list_productos);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(vista.getContext()));
         recyclerView.setAdapter(listAdapterProveedor);

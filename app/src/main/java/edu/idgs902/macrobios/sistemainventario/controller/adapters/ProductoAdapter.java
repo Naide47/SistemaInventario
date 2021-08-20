@@ -58,8 +58,8 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
         public ViewHolderData(View itemView, OnItemListener onItemListener) {
             super(itemView);
             this.list_icono = itemView.findViewById(R.id.list_icono);
-            this.list_no = itemView.findViewById(R.id.list_no);
-            this.list_nombre = itemView.findViewById(R.id.list_nombre);
+            this.list_no = itemView.findViewById(R.id.list_titulo2);
+            this.list_nombre = itemView.findViewById(R.id.list_subtitulo);
             this.list_adicional = itemView.findViewById(R.id.list_adicional);
             this.onItemListener = onItemListener;
 
