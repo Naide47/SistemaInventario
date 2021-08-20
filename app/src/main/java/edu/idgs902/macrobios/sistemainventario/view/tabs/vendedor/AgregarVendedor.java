@@ -1,4 +1,4 @@
-package edu.idgs902.macrobios.sistemainventario.view.vendedor;
+package edu.idgs902.macrobios.sistemainventario.view.tabs.vendedor;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,22 +9,19 @@ import android.util.Log;
 import android.widget.EditText;
 
 import edu.idgs902.macrobios.sistemainventario.R;
-import edu.idgs902.macrobios.sistemainventario.controller.ControllerPersona;
 import edu.idgs902.macrobios.sistemainventario.controller.ControllerVendedor;
-import edu.idgs902.macrobios.sistemainventario.model.Persona;
 import edu.idgs902.macrobios.sistemainventario.model.Vendedor;
 import edu.idgs902.macrobios.sistemainventario.view.HomeActivity;
 
 public class AgregarVendedor extends AppCompatActivity {
 
-    EditText NoVendedor, NombreVendedor, CalleVendedor, ColoniaVendedor, TelefonoVendedor, EmailVendedor, ComisionVendedor;
+    EditText NombreVendedor, CalleVendedor, ColoniaVendedor, TelefonoVendedor, EmailVendedor, ComisionVendedor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_vendedor);
 
-        NoVendedor = findViewById(R.id.NoVendedor);
         NombreVendedor = findViewById(R.id.NombreVendedor);
         CalleVendedor = findViewById(R.id.CalleVendedor);
         ColoniaVendedor = findViewById(R.id.ColoniaVendedor);
@@ -39,8 +36,10 @@ public class AgregarVendedor extends AppCompatActivity {
         });
 
         findViewById(R.id.btnAltaVendedor).setOnClickListener(view -> {
-            //agregar();
+            agregar();
             limpiar();
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
         });
 
     }
@@ -62,8 +61,9 @@ public class AgregarVendedor extends AppCompatActivity {
                         Double.parseDouble(ComisionVendedor.getText().toString()));
 
                 ControllerVendedor controllerVendedor = new ControllerVendedor( this);
-
                 controllerVendedor.addVendedor(vendedor);
+
+                //alerta("Confirmacion", "El vendedor fue agregado con exito " + controllerVendedor.addVendedor(vendedor));
 
             }
             alerta("Confirmacion", "El vendedor fue agregado con exito");
@@ -86,7 +86,6 @@ public class AgregarVendedor extends AppCompatActivity {
     }
 
     private void limpiar(){
-        NoVendedor.setText("");
         NombreVendedor.setText("");
         CalleVendedor.setText("");
         ColoniaVendedor.setText("");

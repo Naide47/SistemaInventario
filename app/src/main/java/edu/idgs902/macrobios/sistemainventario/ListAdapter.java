@@ -49,10 +49,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         ViewHolder(View itemView, OnClienteListener onClienteListener) {
             super(itemView);
-            iconImage = itemView.findViewById(R.id.iconImageView);
-            nombre = itemView.findViewById(R.id.nombreView);
-            ciudad = itemView.findViewById(R.id.ciudadView);
-            saldo = itemView.findViewById(R.id.saldotView);
+            iconImage = itemView.findViewById(R.id.iconImageViewP);
+            nombre = itemView.findViewById(R.id.nombreViewP);
+            ciudad = itemView.findViewById(R.id.ciudadViewP);
+            saldo = itemView.findViewById(R.id.saldotViewP);
             this.onClienteListener = onClienteListener;
 
             itemView.setOnClickListener(this);

@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SistemaInventario">
-
-        <activity android:name=".view.proveedor.ModificarProveedor"
+        <activity
+            android:name=".view.tabs.vendedor.ModificarVendedor"
+            android:exported="true" />
+        <activity
+            android:name=".view.proveedor.ModificarProveedor"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustPan" />
@@ -29,12 +32,10 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustPan" />
-
-        <activity android:name=".view.tabs.producto.AccionesProductoActivity"></activity>
+        <activity android:name=".view.tabs.producto.AccionesProductoActivity" />
         <activity android:name=".view.tabs.producto.AgregarProductoActivity" />
-
         <activity
-            android:name=".view.vendedor.AgregarVendedor"
+            android:name=".view.tabs.vendedor.AgregarVendedor"
             android:exported="true" />
         <activity
             android:name=".view.HomeActivity"

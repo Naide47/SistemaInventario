@@ -12,7 +12,6 @@ import java.util.List;
 import edu.idgs902.macrobios.sistemainventario.model.DataBase;
 import edu.idgs902.macrobios.sistemainventario.model.Persona;
 import edu.idgs902.macrobios.sistemainventario.model.Vendedor;
-import edu.idgs902.macrobios.sistemainventario.view.vendedor.AgregarVendedor;
 
 public class ControllerVendedor extends DataBase {
 
@@ -103,9 +102,20 @@ public class ControllerVendedor extends DataBase {
                 values.put(K_VENDEDOR_COMISIONES, vendedor.getComisiones());
 
                 result = sqlite.update(T_VENDEDOR,
-                        values, K_VENDEDOR_COMISIONES + "=?",
+                        values, K_VENDEDOR_NOVENDEDOR + "=?",
                         new String[]{String.valueOf(vendedor.getNoVendedor())});
                 sqlite.close();
+
+                if (result != 0)
+                {
+                    ControllerPersona controllerPersona = new ControllerPersona(context, context);
+                    controllerPersona.updatePersona(new Persona(vendedor.getNoPersona(),
+                            vendedor.getNombre(),
+                            vendedor.getCalle(),
+                            vendedor.getColonia(),
+                            vendedor.getTelefono(),
+                            vendedor.getEmail()));
+                }
             }
         }catch (Exception ex){
             Log.e("updateVendedor", ex.toString());
